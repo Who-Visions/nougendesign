@@ -13,7 +13,7 @@ Split from Who-Visions/NouGenShards on 2026-10-01 as a fresh import of `designs/
 
 ## Staying in sync
 
-NouGenShards is the source of truth; this repo is a mirror of `designs/` and the compiler. Edit there, then:
+NouGenShards is the source of truth; this repo is a mirror. A scheduled "Drift check" workflow goes red when they differ (the organization does not allow Actions to open PRs, so syncing stays a manual PR) of `designs/` and the compiler. Edit there, then:
 
 ```sh
 python tools/sync_from_shards.py <NouGenShards checkout> --check   # exit 1 on drift
