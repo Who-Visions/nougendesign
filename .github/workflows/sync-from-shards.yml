@@ -1,0 +1,26 @@
+name: Drift check against NouGenShards
+# The organization does not allow Actions to open pull requests, so this job
+# cannot sync by itself. It reports drift instead: red means NouGenShards
+# changed and this mirror has not been updated. To clear it, run
+#   python tools/sync_from_shards.py <NouGenShards checkout>
+# and open a PR.
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Read NouGenShards (public, no token needed)
+        run: git clone --depth 1 https://github.com/Who-Visions/NouGenShards "$RUNNER_TEMP/shards"
+      - name: Fail if this mirror differs from NouGenShards
+        run: python tools/sync_from_shards.py "$RUNNER_TEMP/shards" --check
