@@ -1,0 +1,37 @@
+{
+  "description": "Authentic Cherry Blossom (Sakura) chromatic design package for nocturnal and daytime hanami editorial experiences.",
+  "dialect": "nougendesigns/v0",
+  "entry": {
+    "prose": "DESIGN.md",
+    "tokens": "tokens.css"
+  },
+  "name": "sakura-bloom",
+  "provenance": [
+    {
+      "kind": "observed",
+      "note": "Calibrated petal reflectance profiles of Prunus serrulata (Kanzan, Shirofugen, Somei Yoshino).",
+      "source": "Brooklyn Botanic Garden Cherry Cultivar Herbarium & Hanami Records"
+    },
+    {
+      "kind": "observed",
+      "note": "Applied OKLCH perceptual lightness consistency, 60-30-10 distribution, and Birren psychological functioning.",
+      "source": "The Observatory/.agents/skills/31-nougenmorph-color-theory/SKILL.md"
+    },
+    {
+      "kind": "invented",
+      "note": "Yozakura (night sakura) palette with lantern amber and matcha accent contrast pairings.",
+      "source": "Sakura Bloom Hanami Palette Brief"
+    }
+  ],
+  "schemaVersion": "od-design-system-project/v1",
+  "sourceDigest": "e634db9d8fc841c214ce040f17bffc9465242075895b8138bc2eabae510b4179",
+  "surfaces": {
+    "ground": "--bg",
+    "ink": "--text"
+  },
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "version": "1.0.0"
+}

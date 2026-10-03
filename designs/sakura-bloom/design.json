@@ -1,0 +1,126 @@
+{
+  "dialect": "nougendesigns/v0",
+  "name": "sakura-bloom",
+  "version": "1.0.0",
+  "description": "Authentic Cherry Blossom (Sakura) chromatic design package for nocturnal and daytime hanami editorial experiences.",
+  "referenceWorld": "Japanese cherry blossom arboretum, traditional hanami under evening lanterns (Yozakura), polished hinoki wood, stone paths, and seasonal Kyoto wagashi.",
+  "antiPatterns": "Reject synthetic hyper-neon magenta, abrasive un-shaded pink, blinding white cards, low-contrast washed-out pastel text, and arbitrary decorative gradients.",
+  "materiality": "Tactile, organic surfaces blending deep night ink (#120b10) with translucent rose-quartz slate panels, soft cherry bark borders, and delicate Sakura petal highlights.",
+  "density": "Quiet, deliberate spatial pacing honoring Japanese Ma (negative space). 60% nocturnal garden substrate, 30% structured blossom panels, and 10% focal floral accents.",
+  "motionGrammar": "Delicate, natural flutter physics inspired by falling petals in light wind. 220ms ease-out transitions for cards and menus; strict prefers-reduced-motion zero-drift guarantee.",
+  "interactionPhysics": "Crisp, tactile responsiveness on all interactive cards, season schedule toggles, pass tiers, and lantern illumination states. Direct feedback without speculative bounce.",
+  "informationHierarchy": "Bloom phase & cultivar identification first (Somei Yoshino, Kanzan, Shirofugen), followed by timeline schedule, stage frequency details, garden navigation, and reservation ticketing.",
+  "responsiveBehavior": "Container-proportional layout stacking gracefully from multi-column garden exhibits into single-column mobile viewports (down to 320px) while maintaining 44px touch targets.",
+  "accessibility": "High-contrast legibility across both Yozakura (night) and Daytime Hanami themes. Meets WCAG AAA with primary text contrast over 14:1 and UI accents exceeding 4.5:1.",
+  "brandVoice": "Serene, poetic, botanically accurate, and technologically refined. Balances Japanese seasonal terminology (Yozakura, Hanami, Ma) with clear recovery instructions.",
+  "iconography": "Minimalist, organic line iconography reflecting flora, lanterns, seasonal tea, acoustic strings, and pathfinding.",
+  "dataViz": "Bloom tracking charts, cultivar flowering phase indicators, countdown timers, and capacity allocation meters with readable monospace numbers.",
+  "stateGrammar": "Distinct default, hover, focus-visible, active, disabled, bloom-in-progress, peak-bloom, and verified pass states.",
+  "provenance": "Calibrated against Skill 31 (NouGenMorph Color Theory & Chromatic Web Architecture) and authentic Japanese botanical color records for Prunus serrulata cultivars.",
+  "tokens": {
+    "--bg": "#120b10",
+    "--bg-canvas": "#120b10",
+    "--panel": "#1d121a",
+    "--panel-solid": "#1d121a",
+    "--panel-card": "#2a1b26",
+    "--panel-hover": "#3a2534",
+    "--line": "#483242",
+    "--line-subtle": "#31202c",
+    "--text": "#faedf5",
+    "--muted": "#b89eaf",
+    "--accent": "#f472b6",
+    "--accent-hover": "#f687c3",
+    "--accent-petal": "#ffd7ec",
+    "--accent-bark": "#85586f",
+    "--accent-lantern": "#ffbe76",
+    "--accent-matcha": "#78b178",
+    "--danger": "#ff6b81",
+    "--warn": "#f9ca24",
+    "--focus": "#f472b6",
+    "--control-ink": "#120b10",
+    "--radius-sm": "4px",
+    "--radius-md": "12px",
+    "--radius-lg": "20px",
+    "--font-main": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    "--font-mono": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+    "--space-1": "0.25rem",
+    "--space-2": "0.5rem",
+    "--space-3": "0.75rem",
+    "--space-4": "1rem",
+    "--space-5": "1.5rem",
+    "--space-6": "2rem",
+    "--motion-fast": "160ms",
+    "--motion-ease": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "--reading-measure": "65ch",
+    "--target-min": "2.75rem",
+    "--target-touch": "2.75rem"
+  },
+  "themes": {
+    "dark": {},
+    "light": {
+      "--bg": "#fdf7fa",
+      "--panel": "#ffffff",
+      "--panel-solid": "#ffffff",
+      "--panel-card": "#f7ebf2",
+      "--panel-hover": "#f0dde8",
+      "--line": "#e2ccd9",
+      "--text": "#241420",
+      "--muted": "#6d5465",
+      "--accent": "#c2185b",
+      "--accent-hover": "#ad1457",
+      "--control-ink": "#ffffff",
+      "--focus": "#c2185b",
+      "--danger": "#b71c1c"
+    }
+  },
+  "contrastPairs": [
+    {
+      "ink": "--text",
+      "ground": "--bg"
+    },
+    {
+      "ink": "--muted",
+      "ground": "--panel"
+    },
+    {
+      "ink": "--accent",
+      "ground": "--bg",
+      "role": "ui"
+    },
+    {
+      "ink": "--control-ink",
+      "ground": "--accent"
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "observed",
+      "source": "Brooklyn Botanic Garden Cherry Cultivar Herbarium & Hanami Records",
+      "note": "Calibrated petal reflectance profiles of Prunus serrulata (Kanzan, Shirofugen, Somei Yoshino)."
+    },
+    {
+      "kind": "observed",
+      "source": "The Observatory/.agents/skills/31-nougenmorph-color-theory/SKILL.md",
+      "note": "Applied OKLCH perceptual lightness consistency, 60-30-10 distribution, and Birren psychological functioning."
+    },
+    {
+      "kind": "invented",
+      "source": "Sakura Bloom Hanami Palette Brief",
+      "note": "Yozakura (night sakura) palette with lantern amber and matcha accent contrast pairings."
+    }
+  ],
+  "componentMutations": [
+    {
+      "selector": ".cherry-card",
+      "change": "Organic rose-slate panel with delicate bark border and 160ms lift."
+    },
+    {
+      "selector": ".lantern-badge",
+      "change": "Warm lantern amber accent for evening event markers."
+    },
+    {
+      "selector": ":focus-visible",
+      "change": "High-contrast sakura pink accessible keyboard focus ring."
+    }
+  ]
+}

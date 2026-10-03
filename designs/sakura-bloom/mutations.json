@@ -1,0 +1,14 @@
+[
+  {
+    "change": "Organic rose-slate panel with delicate bark border and 160ms lift.",
+    "selector": ".cherry-card"
+  },
+  {
+    "change": "Warm lantern amber accent for evening event markers.",
+    "selector": ".lantern-badge"
+  },
+  {
+    "change": "High-contrast sakura pink accessible keyboard focus ring.",
+    "selector": ":focus-visible"
+  }
+]
