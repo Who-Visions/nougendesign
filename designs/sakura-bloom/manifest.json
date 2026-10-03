@@ -1,5 +1,5 @@
 {
-  "description": "Authentic Cherry Blossom (Sakura) chromatic design package for nocturnal and daytime hanami editorial experiences.",
+  "description": "Authentic 5-tone Sakura Color Palette (color-hex #3584) compiled into a NouGenDesigns v0 package for Brooklyn Botanic Garden.",
   "dialect": "nougendesigns/v0",
   "entry": {
     "prose": "DESIGN.md",
@@ -9,22 +9,22 @@
   "provenance": [
     {
       "kind": "observed",
-      "note": "Calibrated petal reflectance profiles of Prunus serrulata (Kanzan, Shirofugen, Somei Yoshino).",
-      "source": "Brooklyn Botanic Garden Cherry Cultivar Herbarium & Hanami Records"
+      "note": "Exact 5-hex palette: #562135 (deep bark), #c3829e (dusky rose), #e9b1cd (cherry blossom), #ffe7de (pale cream), #fcd1d7 (petal tip).",
+      "source": "color-hex.com/color-palette/3584"
     },
     {
       "kind": "observed",
-      "note": "Applied OKLCH perceptual lightness consistency, 60-30-10 distribution, and Birren psychological functioning.",
+      "note": "Applied OKLCH perceptual lightness, 60-30-10 distribution, and Birren psychological functioning.",
       "source": "The Observatory/.agents/skills/31-nougenmorph-color-theory/SKILL.md"
     },
     {
       "kind": "invented",
-      "note": "Yozakura (night sakura) palette with lantern amber and matcha accent contrast pairings.",
-      "source": "Sakura Bloom Hanami Palette Brief"
+      "note": "Night bloom gala with lantern lighting, champagne welcome, and VIP Cherry Esplanade passes.",
+      "source": "Sakura Soirée 2027 Brooklyn Botanic Garden Brief"
     }
   ],
   "schemaVersion": "od-design-system-project/v1",
-  "sourceDigest": "e634db9d8fc841c214ce040f17bffc9465242075895b8138bc2eabae510b4179",
+  "sourceDigest": "4a2a1bf636c6fef3da8c894ec294e56647472207f2f8113445291747c57d6410",
   "surfaces": {
     "ground": "--bg",
     "ink": "--text"
@@ -33,5 +33,5 @@
     "dark",
     "light"
   ],
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

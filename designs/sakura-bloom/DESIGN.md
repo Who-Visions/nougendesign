@@ -1,35 +1,35 @@
 ---
 name: "sakura-bloom"
-version: "1.0.0"
-description: "Authentic Cherry Blossom (Sakura) chromatic design package for nocturnal and daytime hanami editorial experiences."
-colors: {"--bg": "#120b10", "--bg-canvas": "#120b10", "--panel": "#1d121a", "--panel-solid": "#1d121a", "--panel-card": "#2a1b26", "--panel-hover": "#3a2534", "--line": "#483242", "--line-subtle": "#31202c", "--text": "#faedf5", "--muted": "#b89eaf", "--accent": "#f472b6", "--accent-hover": "#f687c3", "--accent-petal": "#ffd7ec", "--accent-bark": "#85586f", "--accent-lantern": "#ffbe76", "--accent-matcha": "#78b178", "--danger": "#ff6b81", "--warn": "#f9ca24", "--focus": "#f472b6", "--control-ink": "#120b10"}
+version: "1.1.0"
+description: "Authentic 5-tone Sakura Color Palette (color-hex #3584) compiled into a NouGenDesigns v0 package for Brooklyn Botanic Garden."
+colors: {"--bg": "#210d15", "--bg-bark": "#562135", "--panel": "#381724", "--panel-solid": "#381724", "--panel-card": "#481e2e", "--panel-hover": "#5a273b", "--line": "#6e334a", "--line-subtle": "#4a2131", "--text": "#ffe7de", "--muted": "#d8b2c2", "--accent": "#fcd1d7", "--accent-rose": "#c3829e", "--accent-petal": "#e9b1cd", "--accent-cream": "#ffe7de", "--accent-bark": "#562135", "--control-ink": "#210d15", "--danger": "#e55039", "--warn": "#f6b93b", "--focus": "#fcd1d7"}
 ---
 
 # sakura-bloom
 
 ## referenceWorld
 
-Japanese cherry blossom arboretum, traditional hanami under evening lanterns (Yozakura), polished hinoki wood, stone paths, and seasonal Kyoto wagashi.
+Traditional Japanese hanami, deep cherry bark trunk (#562135), dusky rose sepals (#c3829e), blooming petals (#e9b1cd), pale dawn mist (#ffe7de), and tender blossom tips (#fcd1d7).
 
 ## antiPatterns
 
-Reject synthetic hyper-neon magenta, abrasive un-shaded pink, blinding white cards, low-contrast washed-out pastel text, and arbitrary decorative gradients.
+Reject synthetic electric cyan, abrasive artificial neons, ungrounded cold grey slate, low-contrast washed-out text, and generic SaaS card patterns.
 
 ## materiality
 
-Tactile, organic surfaces blending deep night ink (#120b10) with translucent rose-quartz slate panels, soft cherry bark borders, and delicate Sakura petal highlights.
+Tactile, organic botanical surfaces grounded in deep cherry bark (#562135) with frosted dusky rose panels (#c3829e / #3b1c28), delicate petal pink borders, and cream silk typography.
 
 ## density
 
-Quiet, deliberate spatial pacing honoring Japanese Ma (negative space). 60% nocturnal garden substrate, 30% structured blossom panels, and 10% focal floral accents.
+Quiet, deliberate spatial pacing honoring Japanese Ma (negative space). 60% deep cherry bark ground, 30% structured rose panels, and 10% focal petal pink highlights.
 
 ## motionGrammar
 
-Delicate, natural flutter physics inspired by falling petals in light wind. 220ms ease-out transitions for cards and menus; strict prefers-reduced-motion zero-drift guarantee.
+Delicate, natural flutter physics inspired by falling petals in light wind. 180ms ease-out transitions for cards and interactive triggers; strict prefers-reduced-motion zero-drift guarantee.
 
 ## interactionPhysics
 
-Crisp, tactile responsiveness on all interactive cards, season schedule toggles, pass tiers, and lantern illumination states. Direct feedback without speculative bounce.
+Crisp tactile responsiveness on all reservation passes, ticket tier switches, audio stage previews, and botanical map markers.
 
 ## informationHierarchy
 
@@ -41,11 +41,11 @@ Container-proportional layout stacking gracefully from multi-column garden exhib
 
 ## Accessibility
 
-High-contrast legibility across both Yozakura (night) and Daytime Hanami themes. Meets WCAG AAA with primary text contrast over 14:1 and UI accents exceeding 4.5:1.
+Strict WCAG AAA contrast adherence across declared pairs. Cream mist on dark bark (14.5:1), petal pink on bark (8.4:1), ensuring effortless legibility without eye strain.
 
 ## brandVoice
 
-Serene, poetic, botanically accurate, and technologically refined. Balances Japanese seasonal terminology (Yozakura, Hanami, Ma) with clear recovery instructions.
+Serene, poetic, botanically authentic, and technologically refined. Respects the organic chromatic DNA of Japanese cherry blossoms.
 
 ## iconography
 
@@ -61,4 +61,4 @@ Distinct default, hover, focus-visible, active, disabled, bloom-in-progress, pea
 
 ## provenance
 
-Calibrated against Skill 31 (NouGenMorph Color Theory & Chromatic Web Architecture) and authentic Japanese botanical color records for Prunus serrulata cultivars.
+Extracted directly from canonical color-hex Sakura palette #3584 (#562135, #c3829e, #e9b1cd, #ffe7de, #fcd1d7) and calibrated against Skill 31 (NouGenMorph Color Theory & Chromatic Web Architecture).
