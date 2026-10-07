@@ -1,11 +1,36 @@
-.ng-ui{--ng-ink:#172522;--ng-muted:#52645e;--ng-border:#dce5e0;--ng-panel:#f4f7f5;color:var(--ng-ink);font:inherit;max-width:60rem;margin-inline:auto;padding:clamp(1rem,3vw,2rem)}
-.ng-ui__heading{font-size:clamp(1.3rem,3vw,2rem);line-height:1.2;margin:0 0 1rem}
-.ng-ui__metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr));gap:.75rem;margin-bottom:1rem}
-.ng-ui__metric,.ng-ui__status{background:var(--ng-panel);border:1px solid var(--ng-border);border-radius:1rem;padding:1rem;min-width:0}
-.ng-ui__metric{display:flex;flex-direction:column;gap:.35rem}.ng-ui__value{font-size:clamp(1.5rem,4vw,2.3rem);font-variant-numeric:tabular-nums}.ng-ui__label,.ng-ui__detail,.ng-ui__footer,.ng-ui__evidence{color:var(--ng-muted);font-size:.85rem}
-.ng-ui__routes{display:grid;gap:.6rem}.ng-ui__status-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}.ng-ui__detail{margin:.5rem 0 0}
-.ng-ui__pill{border-radius:999px;padding:.3rem .65rem;font-size:.8rem;font-weight:650;border:1px solid currentColor}
-.ng-ui--healthy{color:#176341;background:#e2f4e9}.ng-ui--degraded{color:#825000;background:#fff2d5}.ng-ui--down{color:#982c2c;background:#ffe7e7}.ng-ui--unknown{color:#465c66;background:#e7eff3}
-.ng-ui__footer{margin-top:1rem;overflow-wrap:anywhere}
-@media(prefers-color-scheme:dark){.ng-ui{--ng-ink:#e6efea;--ng-muted:#b5c9c0;--ng-border:#3b5046;--ng-panel:#1b2923}.ng-ui--healthy{color:#a5e9c3;background:#1a4931}.ng-ui--degraded{color:#ffe0a3;background:#58401d}.ng-ui--down{color:#ffb1b1;background:#592727}.ng-ui--unknown{color:#c8d9e4;background:#31444f}}
+/* Requires generated designs/nougen-core/tokens.css on the host page.
+ * Semantic UI owns layout only; NouGenDesigns owns visual tokens and themes.
+ * This stylesheet deliberately avoids gradients, glass, glow and pill radii.
+ */
+.ng-ui{
+  color:var(--text);background:var(--bg);font:var(--type-body) var(--font-main);
+  max-width:var(--workbench-width);margin-inline:auto;
+  padding:clamp(var(--space-4),3vw,var(--space-6));
+  min-width:0
+}
+.ng-ui__heading{font-size:clamp(1.4rem,3vw,2rem);line-height:1.2;margin:0 0 var(--space-5)}
+.ng-ui__metrics{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));
+  gap:var(--space-4);margin-bottom:var(--space-5)
+}
+.ng-ui__metric,.ng-ui__status{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:var(--space-4);min-width:0
+}
+.ng-ui__metric{display:flex;flex-direction:column;gap:var(--space-2)}
+.ng-ui__value{font-size:clamp(1.5rem,4vw,2.3rem);font-variant-numeric:tabular-nums;font-family:var(--font-mono)}
+.ng-ui__label,.ng-ui__detail,.ng-ui__footer,.ng-ui__evidence{color:var(--muted);font-size:var(--type-meta);overflow-wrap:anywhere}
+.ng-ui__routes{display:grid;gap:var(--space-3)}
+.ng-ui__status-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-2)}
+.ng-ui__detail{margin:var(--space-2) 0 0;white-space:pre-wrap}
+.ng-ui__evidence{display:block;margin-top:var(--space-2)}
+.ng-ui__pill{
+  border-radius:var(--radius-md);padding:var(--space-1) var(--space-2);
+  font-size:var(--type-meta);font-weight:650;border:1px solid currentColor
+}
+.ng-ui--healthy{color:var(--accent-green)}.ng-ui--degraded{color:var(--warn)}
+.ng-ui--down{color:var(--danger)}.ng-ui--unknown{color:var(--muted)}
+.ng-ui__notice{border:1px solid var(--line);padding:var(--space-4)}
+.ng-ui__footer{margin-top:var(--space-5)}
+@media(max-width:22rem){.ng-ui__status-main{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.ng-ui *{animation:none!important;transition:none!important}}
