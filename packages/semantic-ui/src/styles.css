@@ -1,0 +1,11 @@
+.ng-ui{--ng-ink:#172522;--ng-muted:#52645e;--ng-border:#dce5e0;--ng-panel:#f4f7f5;color:var(--ng-ink);font:inherit;max-width:60rem;margin-inline:auto;padding:clamp(1rem,3vw,2rem)}
+.ng-ui__heading{font-size:clamp(1.3rem,3vw,2rem);line-height:1.2;margin:0 0 1rem}
+.ng-ui__metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr));gap:.75rem;margin-bottom:1rem}
+.ng-ui__metric,.ng-ui__status{background:var(--ng-panel);border:1px solid var(--ng-border);border-radius:1rem;padding:1rem;min-width:0}
+.ng-ui__metric{display:flex;flex-direction:column;gap:.35rem}.ng-ui__value{font-size:clamp(1.5rem,4vw,2.3rem);font-variant-numeric:tabular-nums}.ng-ui__label,.ng-ui__detail,.ng-ui__footer,.ng-ui__evidence{color:var(--ng-muted);font-size:.85rem}
+.ng-ui__routes{display:grid;gap:.6rem}.ng-ui__status-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}.ng-ui__detail{margin:.5rem 0 0}
+.ng-ui__pill{border-radius:999px;padding:.3rem .65rem;font-size:.8rem;font-weight:650;border:1px solid currentColor}
+.ng-ui--healthy{color:#176341;background:#e2f4e9}.ng-ui--degraded{color:#825000;background:#fff2d5}.ng-ui--down{color:#982c2c;background:#ffe7e7}.ng-ui--unknown{color:#465c66;background:#e7eff3}
+.ng-ui__footer{margin-top:1rem;overflow-wrap:anywhere}
+@media(prefers-color-scheme:dark){.ng-ui{--ng-ink:#e6efea;--ng-muted:#b5c9c0;--ng-border:#3b5046;--ng-panel:#1b2923}.ng-ui--healthy{color:#a5e9c3;background:#1a4931}.ng-ui--degraded{color:#ffe0a3;background:#58401d}.ng-ui--down{color:#ffb1b1;background:#592727}.ng-ui--unknown{color:#c8d9e4;background:#31444f}}
+@media(prefers-reduced-motion:reduce){.ng-ui *{animation:none!important;transition:none!important}}
