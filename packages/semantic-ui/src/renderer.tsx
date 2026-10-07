@@ -10,30 +10,48 @@ const healthClass: Record<Health, string> = {
 };
 function Node({ node }: { node: UINode }) {
   switch (node.type) {
-    case "heading": return <h2 className="ng-ui__heading">{node.text}</h2>;
-    case "metric": return <section className="ng-ui__metric" aria-label={node.label}>
-      <strong className="ng-ui__value">{node.value}</strong>
-      <span className="ng-ui__label">{node.label}</span>
-    </section>;
-    case "status": return <section className="ng-ui__status" aria-label={node.label}>
-      <div className="ng-ui__status-main"><strong>{node.label}</strong>
-        <span className={`ng-ui__pill ${healthClass[node.value]}`}>{healthLabel[node.value]}</span>
-      </div>
-      {node.detail && <p className="ng-ui__detail">{node.detail}</p>}
-      {node.evidence !== "verified" && <small className="ng-ui__evidence">Evidence: {node.evidence}</small>}
-    </section>;
-    default: return assertNever(node);
+    case "heading":
+      return <h2 className="ng-ui__heading">{node.text}</h2>;
+    case "metric":
+      return <section className="ng-ui__metric" aria-label={node.label}>
+        <strong className="ng-ui__value">{node.value}</strong>
+        <span className="ng-ui__label">{node.label}</span>
+      </section>;
+    case "status":
+      return <section className="ng-ui__status" aria-label={node.label}>
+        <div className="ng-ui__status-main">
+          <strong>{node.label}</strong>
+          <span className={`ng-ui__pill ${healthClass[node.value]}`}>
+            {node.freshness === "stale" ? "Stale" : healthLabel[node.value]}
+          </span>
+        </div>
+        {node.detail && <p className="ng-ui__detail">{node.detail}</p>}
+        <small className="ng-ui__evidence">
+          {node.freshness === "stale" ? "Stale observation" : `Evidence: ${node.evidence}`}
+          {" · "}<time dateTime={node.observedAt}>{node.observedAt}</time>
+        </small>
+      </section>;
+    case "notice":
+      return <p className="ng-ui__notice" role="status">{node.text}</p>;
+    default:
+      return assertNever(node);
   }
 }
-function assertNever(value: never): never { throw new Error(`Unsupported UI node: ${JSON.stringify(value)}`); }
+function assertNever(value: never): never {
+  throw new Error(`Unsupported UI node: ${JSON.stringify(value)}`);
+}
 export function SemanticUI({ spec }: { spec: UISpec }) {
   if (spec.schemaVersion !== "0.1.0") throw new Error("Unsupported UI schema version");
-  const metrics = spec.nodes.filter(n => n.type === "metric");
-  const others = spec.nodes.filter(n => n.type !== "metric");
+  const metrics = spec.nodes.filter(node => node.type === "metric");
+  const headings = spec.nodes.filter(node => node.type === "heading");
+  const details = spec.nodes.filter(node => node.type === "status" || node.type === "notice");
   return <article className="ng-ui" aria-label="NouGen fleet status" data-source={spec.sourceSnapshot}>
-    {others.filter(n => n.type === "heading").map(n => <Node key={n.id} node={n} />)}
-    <div className="ng-ui__metrics">{metrics.map(n => <Node key={n.id} node={n} />)}</div>
-    <div className="ng-ui__routes">{others.filter(n => n.type === "status").map(n => <Node key={n.id} node={n} />)}</div>
-    <footer className="ng-ui__footer">Snapshot: <time dateTime={spec.generatedFrom}>{spec.generatedFrom}</time></footer>
+    {headings.map(node => <Node key={node.id} node={node} />)}
+    <div className="ng-ui__metrics">{metrics.map(node => <Node key={node.id} node={node} />)}</div>
+    <div className="ng-ui__routes">{details.map(node => <Node key={node.id} node={node} />)}</div>
+    <footer className="ng-ui__footer">
+      Snapshot <time dateTime={spec.generatedFrom}>{spec.generatedFrom}</time>
+      {" · "}Evaluated <time dateTime={spec.asOf}>{spec.asOf}</time>
+    </footer>
   </article>;
 }
