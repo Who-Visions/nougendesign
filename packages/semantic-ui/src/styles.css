@@ -30,6 +30,10 @@
 }
 .ng-ui--healthy{color:var(--accent-green)}.ng-ui--degraded{color:var(--warn)}
 .ng-ui--down{color:var(--danger)}.ng-ui--unknown{color:var(--muted)}
+/* The light-theme success/warn accent tokens are insufficient for badge text on white.
+ * Preserve semantic labels and use the high-contrast canonical foreground in light theme. */
+:root[data-theme="light"] .ng-ui--healthy,
+:root[data-theme="light"] .ng-ui--degraded{color:var(--text)}
 .ng-ui__notice{border:1px solid var(--line);padding:var(--space-4)}
 .ng-ui__footer{margin-top:var(--space-5)}
 @media(max-width:22rem){.ng-ui__status-main{align-items:flex-start;flex-direction:column}}
