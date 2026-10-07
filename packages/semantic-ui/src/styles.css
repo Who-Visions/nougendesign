@@ -1,0 +1,40 @@
+/* Requires generated designs/nougen-core/tokens.css on the host page.
+ * Semantic UI owns layout only; NouGenDesigns owns visual tokens and themes.
+ * This stylesheet deliberately avoids gradients, glass, glow and pill radii.
+ */
+.ng-ui{
+  color:var(--text);background:var(--bg);font:var(--type-body) var(--font-main);
+  max-width:var(--workbench-width);margin-inline:auto;
+  padding:clamp(var(--space-4),3vw,var(--space-6));
+  min-width:0
+}
+.ng-ui__heading{font-size:clamp(1.4rem,3vw,2rem);line-height:1.2;margin:0 0 var(--space-5)}
+.ng-ui__metrics{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));
+  gap:var(--space-4);margin-bottom:var(--space-5)
+}
+.ng-ui__metric,.ng-ui__status{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:var(--space-4);min-width:0
+}
+.ng-ui__metric{display:flex;flex-direction:column;gap:var(--space-2)}
+.ng-ui__value{font-size:clamp(1.5rem,4vw,2.3rem);font-variant-numeric:tabular-nums;font-family:var(--font-mono)}
+.ng-ui__label,.ng-ui__detail,.ng-ui__footer,.ng-ui__evidence{color:var(--muted);font-size:var(--type-meta);overflow-wrap:anywhere}
+.ng-ui__routes{display:grid;gap:var(--space-3)}
+.ng-ui__status-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-2)}
+.ng-ui__detail{margin:var(--space-2) 0 0;white-space:pre-wrap}
+.ng-ui__evidence{display:block;margin-top:var(--space-2)}
+.ng-ui__pill{
+  border-radius:var(--radius-md);padding:var(--space-1) var(--space-2);
+  font-size:var(--type-meta);font-weight:650;border:1px solid currentColor
+}
+.ng-ui--healthy{color:var(--accent-green)}.ng-ui--degraded{color:var(--warn)}
+.ng-ui--down{color:var(--danger)}.ng-ui--unknown{color:var(--muted)}
+/* The light-theme success/warn accent tokens are insufficient for badge text on white.
+ * Preserve semantic labels and use the high-contrast canonical foreground in light theme. */
+:root[data-theme="light"] .ng-ui--healthy,
+:root[data-theme="light"] .ng-ui--degraded{color:var(--text)}
+.ng-ui__notice{border:1px solid var(--line);padding:var(--space-4)}
+.ng-ui__footer{margin-top:var(--space-5)}
+@media(max-width:22rem){.ng-ui__status-main{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.ng-ui *{animation:none!important;transition:none!important}}
