@@ -1,0 +1,30 @@
+[
+  {
+    "change": "Solid navy #0f172a panel with high-contrast text, 44px tap targets, distinct Management and Teacher Studio sections, and clear Sign Out action.",
+    "selector": ".dashboard-sidebar"
+  },
+  {
+    "change": "Crisp white card with rounded-xl border, clear status badge, parent contact details, child subject tags, and large 44px Approve and Decline buttons.",
+    "selector": ".registration-card"
+  },
+  {
+    "change": "Large tactile filter controls with active brand blue highlight (#0c7fac), clear pending count badge, and high-visibility focus outline.",
+    "selector": ".filter-pill-bar button"
+  },
+  {
+    "change": "Structured session tile with tabular time block, student name, subject indicator, direct Start Zoom action button, and safe Cancel flow with confirmation.",
+    "selector": ".schedule-session-card"
+  },
+  {
+    "change": "Clean white card with rounded-2xl geometry, large bold metric numerals, baseline label alignment, and no gradient fills or glow shadows.",
+    "selector": ".stat-overview-card"
+  },
+  {
+    "change": "Focused lesson editor with clear tabbed navigation between content and branching logic, explicit save feedback, and large form controls.",
+    "selector": ".studio-editor-pane"
+  },
+  {
+    "change": "High-contrast 2px solid brand blue (#0c7fac) keyboard outline with 3px offset on all interactive buttons, links, and form fields.",
+    "selector": ":focus-visible"
+  }
+]

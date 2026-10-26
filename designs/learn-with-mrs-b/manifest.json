@@ -1,0 +1,57 @@
+{
+  "description": "Calm, trustworthy, highly legible tutor back-office design system for Learn with Mrs. B.",
+  "dialect": "nougendesigns/v0",
+  "entry": {
+    "prose": "DESIGN.md",
+    "tokens": "tokens.css"
+  },
+  "name": "learn-with-mrs-b",
+  "provenance": [
+    {
+      "kind": "observed",
+      "note": "Brand blue #0C7FAC, brand-strong hover #0a6b92, navy #0f172a sidebar, gold accents, slate neutrals, font-serif Playfair Display, font-sans Roboto, and rounded-xl card tokens.",
+      "source": "C:/Users/super/Outpost/lwmb-d1/src/app/globals.css"
+    },
+    {
+      "kind": "observed",
+      "note": "Tutor back-office layout with fixed navy sidebar (#0f172a), Management and Teacher Studio navigation tiers, responsive mobile drawer toggle, and top email header.",
+      "source": "C:/Users/super/Outpost/lwmb-d1/src/app/dashboard/layout.tsx"
+    },
+    {
+      "kind": "observed",
+      "note": "Registrations review workbench with pending/approved/declined filter pills, parent contact details, child subject breakdown, and single-click Approve/Decline action buttons.",
+      "source": "C:/Users/super/Outpost/lwmb-d1/src/app/dashboard/registrations/page.tsx"
+    },
+    {
+      "kind": "observed",
+      "note": "Calendar and list views for tutoring schedule, session time clusters, subject tags, Start Zoom direct action link, and cancel confirmation workflow.",
+      "source": "C:/Users/super/Outpost/lwmb-d1/src/app/dashboard/schedule/page.tsx"
+    },
+    {
+      "kind": "observed",
+      "note": "Interactive lesson and concept card editor with branching states, content/interaction tabs, and save persistence.",
+      "source": "C:/Users/super/Outpost/lwmb-d1/src/app/studio/editor/page.tsx"
+    },
+    {
+      "kind": "inferred",
+      "note": "Inferred minimum 44px touch targets for non-technical educators, 4.5:1 text contrast floor, and 3:1 focus ring visibility against both light ground and dark navy.",
+      "source": "WCAG 2.1 AA Specification & EN 301 549 Accessibility Requirements"
+    },
+    {
+      "kind": "invented",
+      "note": "Calm British tutoring aesthetic, serene slate-50 desk palette, structured white cards with rounded-xl corners, and zero-distraction workflow geometry.",
+      "source": "NouGenDesigns Learn with Mrs. B Tutor Back Office brief"
+    }
+  ],
+  "schemaVersion": "od-design-system-project/v1",
+  "sourceDigest": "28162eeaae4906e39acd104a65477400d612d55988620a78a33d8ae894ac8529",
+  "surfaces": {
+    "ground": "--bg",
+    "ink": "--text"
+  },
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "version": "1.0.0"
+}
