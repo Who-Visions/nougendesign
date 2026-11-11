@@ -1,0 +1,51 @@
+:root {
+  --accent-gravity: #e879f9;
+  --bg-accretion: #180c2e;
+  --bg-obsidian: #050508;
+  --bg-void: #090611;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --line-singularity: #a855f7;
+  --motion-explode: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-orbit: linear;
+  --panel-border: rgba(168, 85, 247, 0.28);
+  --panel-glass: rgba(16, 10, 32, 0.72);
+  --purple-core: #581c87;
+  --purple-flare: #d8b4fe;
+  --purple-glow: rgba(168, 85, 247, 0.55);
+  --purple-neon: #a855f7;
+  --purple-vibrant: #9333ea;
+  --radius-hud: 12px;
+  --radius-shard: 1px;
+  --shadow-event-horizon: 0 0 80px 20px rgba(147, 51, 234, 0.35);
+  --shadow-shard-glow: 0 0 16px rgba(168, 85, 247, 0.4);
+  --shard-dark: #0a0714;
+  --shard-rim: #c084fc;
+  --shard-specular: #2e1065;
+  --space-unit: 0.5rem;
+  --stardust-white: #f5f3ff;
+  --text-dim: #7c6f9f;
+  --text-muted: #c4b5fd;
+  --text-primary: #f8fafc;
+  --violet-plasma: #7c3aed;
+}
+:root[data-theme="dark"] {
+  --bg-obsidian: #050508;
+  --bg-void: #090611;
+  --text-muted: #c4b5fd;
+  --text-primary: #f8fafc;
+}
+:root[data-theme="light"] {
+  --bg-obsidian: #0f0c1b;
+  --bg-void: #1b1430;
+  --text-muted: #ddd6fe;
+  --text-primary: #ffffff;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
