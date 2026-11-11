@@ -1,0 +1,42 @@
+{
+  "description": "Obsidian void and cosmic purple singularity backdrop with explosive crystalline shard dynamics for high-impact NouGen surfaces.",
+  "dialect": "nougendesigns/v0",
+  "entry": {
+    "prose": "DESIGN.md",
+    "tokens": "tokens.css"
+  },
+  "name": "obsidian-singularity",
+  "provenance": [
+    {
+      "kind": "observed",
+      "note": "Dialect structure, 14-section requirements, and token validation rules.",
+      "source": "NouGenDesign/designs/nougen-core/design.json"
+    },
+    {
+      "kind": "observed",
+      "note": "DESIGN.md standard for cross-agent design system compilation.",
+      "source": "VoltAgent/awesome-design-md (Google Stitch standard)"
+    },
+    {
+      "kind": "inferred",
+      "note": "Obsidian ink (#050508) and cosmic violet OKLCH color harmony for maximum photopic contrast.",
+      "source": ".agents/skills/31-nougenmorph-color-theory/SKILL.md"
+    },
+    {
+      "kind": "invented",
+      "note": "Dynamic exploding crystalline shard physics and gravitational lensing accretion geometry.",
+      "source": "Obsidian Singularity Shard backdrop specification"
+    }
+  ],
+  "schemaVersion": "od-design-system-project/v1",
+  "sourceDigest": "ae2eabc4aaecd32970752c30e8ae04d004ca2610e41a17c0ebcbbf6eabf5d2f4",
+  "surfaces": {
+    "ground": "--bg",
+    "ink": "--text"
+  },
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "version": "1.0.0"
+}

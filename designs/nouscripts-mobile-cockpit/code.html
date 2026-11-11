@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>NouScripts Mobile Cockpit</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: JetBrains Mono & Space Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#2c303a",
+            "surface-dim": "#0f131c",
+            "on-secondary-fixed": "#002113",
+            "surface-container-low": "#181b25",
+            "primary-fixed": "#c4e7ff",
+            "tertiary-container": "#bda2ff",
+            "tertiary-fixed-dim": "#d0bcff",
+            "on-tertiary-container": "#520fbb",
+            "secondary": "#4edea3",
+            "surface-tint": "#7bd0ff",
+            "surface-container": "#1c1f29",
+            "on-surface": "#dfe2ef",
+            "on-tertiary-fixed": "#23005c",
+            "secondary-fixed-dim": "#4edea3",
+            "on-tertiary": "#3c0091",
+            "outline": "#87929a",
+            "tertiary": "#d5c3ff",
+            "tertiary-fixed": "#e9ddff",
+            "surface-variant": "#31353f",
+            "on-error": "#690005",
+            "surface-container-high": "#262a34",
+            "on-secondary-container": "#00311f",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#004c69",
+            "inverse-primary": "#00668a",
+            "background": "#0f131c",
+            "primary-fixed-dim": "#7bd0ff",
+            "surface": "#0f131c",
+            "secondary-container": "#00a572",
+            "surface-container-lowest": "#0a0e17",
+            "inverse-surface": "#dfe2ef",
+            "on-secondary": "#003824",
+            "on-surface-variant": "#bdc8d1",
+            "on-tertiary-fixed-variant": "#5516be",
+            "outline-variant": "#3e484f",
+            "on-primary-container": "#004965",
+            "secondary-fixed": "#6ffbbe",
+            "on-primary-fixed": "#001e2c",
+            "primary": "#8ed5ff",
+            "error-container": "#93000a",
+            "surface-container-highest": "#31353f",
+            "on-background": "#dfe2ef",
+            "surface-bright": "#353943",
+            "on-secondary-fixed-variant": "#005236",
+            "primary-container": "#38bdf8",
+            "on-primary": "#00354a",
+            "error": "#ffb4ab"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-xl": "1.5rem",
+            "gutter": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "micro-tag": ["JetBrains Mono"],
+            "display-lg": ["Space Grotesk"],
+            "telemetry-unit": ["JetBrains Mono"],
+            "headline-sm": ["Space Grotesk"],
+            "label-caps": ["JetBrains Mono"],
+            "telemetry-value": ["JetBrains Mono"],
+            "body-sm": ["Space Grotesk"],
+            "display-mobile": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "body-lg": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "micro-tag": ["9px", { "lineHeight": "12px", "letterSpacing": "0.14em", "fontWeight": "700" }],
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "telemetry-unit": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-caps": ["10px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "500" }],
+            "telemetry-value": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Scanline pattern for tactical HUD terminal */
+    .hud-scanline {
+      background: linear-gradient(rgba(18, 26, 43, 0) 50%, rgba(0, 0, 0, 0.45) 50%), linear-gradient(90deg, rgba(56, 189, 248, 0.02), rgba(0, 0, 0, 0) 100%);
+      background-size: 100% 3px, 6px 100%;
+    }
+    .hud-grid-pattern {
+      background-image: radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+      background-size: 12px 12px;
+    }
+    /* Monospace telemetry glow */
+    .glow-cyan {
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.28), inset 0 0 8px rgba(56, 189, 248, 0.15);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 12px rgba(78, 222, 163, 0.25);
+    }
+    .glow-ruby {
+      box-shadow: 0 0 16px rgba(244, 63, 94, 0.35), inset 0 0 8px rgba(244, 63, 94, 0.12);
+    }
+    /* Custom scrollbar for HUD log terminal */
+    ::-webkit-scrollbar {
+      width: 3px;
+      height: 3px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0e17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3e484f;
+      border-radius: 2px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased font-body-sm min-h-screen selection:bg-primary-container selection:text-surface-container-lowest">
+<!-- Dynamic Phone Viewport Wrapper -->
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-surface-container-lowest border-x border-outline-variant/20 shadow-2xl pb-28">
+<!-- TOP SHARED APP BAR (From Shared Components JSON) -->
+<header class="bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30 dark:border-outline-variant/30 shadow-sm shadow-primary/10 docked full-width top-0 z-40">
+<div class="flex justify-between items-center w-full px-4 pt-12 pb-3 max-w-md mx-auto">
+<div class="flex items-center space-x-2">
+<button aria-label="Terminal Shell" class="flex items-center text-primary dark:text-primary hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-150 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="terminal">terminal</span>
+</button>
+<span class="text-headline-sm font-headline-sm font-bold tracking-widest text-primary dark:text-primary">NOUGEN REMOTE PRO</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<button aria-label="Sensor Telemetry" class="flex items-center text-primary dark:text-primary hover:text-primary-fixed dark:hover:text-primary-fixed transition-colors duration-150 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="sensors">sensors</span>
+</button>
+</div>
+</div>
+</header>
+<!-- MAIN HUD CONTENT CANVAS -->
+<main class="flex-1 px-3.5 pt-3 space-y-3">
+<!-- SECTION 1: TOP TELEMETRY BAR & SUB-HEADER STATUS CLUSTER -->
+<section class="bg-surface-container-low/90 backdrop-blur-xl border border-primary-container/20 rounded-[4px] p-2.5 shadow-sm relative overflow-hidden">
+<!-- Reticle crosshair corner decorations -->
+<div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary-container"></div>
+<div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary-container"></div>
+<div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-primary-container"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary-container"></div>
+<!-- Cockpit Header Banner -->
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/30">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-primary text-[15px]" data-icon="developer_board">developer_board</span>
+<span class="font-label-caps text-label-caps text-on-surface font-semibold tracking-wider">NOUSCRIPTS COCKPIT // DAEMON MESH</span>
+</div>
+<!-- Node Badge -->
+<div class="flex items-center space-x-1 px-1.5 py-0.5 rounded-[4px] bg-secondary/10 border border-secondary/30">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-micro-tag text-micro-tag text-secondary">APOLLO-DAEMON: RUNNING</span>
+</div>
+</div>
+<!-- Telemetry Gauges Row (Ping, CPU, MEM, Mesh Latency) -->
+<div class="grid grid-cols-4 gap-2 pt-2 text-center">
+<!-- Ping Metric -->
+<div class="bg-surface-container-lowest/80 border border-outline-variant/20 rounded-[4px] p-1.5">
+<div class="font-micro-tag text-micro-tag text-outline tracking-wider">RTT PING</div>
+<div class="font-telemetry-value text-telemetry-value text-primary leading-tight mt-0.5">0.8<span class="font-telemetry-unit text-telemetry-unit text-on-surface-variant font-normal">ms</span></div>
+<div class="w-full bg-outline-variant/40 h-1 mt-1 rounded-[2px] overflow-hidden">
+<div class="bg-secondary h-full w-[14%]"></div>
+</div>
+</div>
+<!-- CPU Micro-Meter -->
+<div class="bg-surface-container-lowest/80 border border-outline-variant/20 rounded-[4px] p-1.5">
+<div class="font-micro-tag text-micro-tag text-outline tracking-wider">CPU MESH</div>
+<div class="font-telemetry-value text-telemetry-value text-secondary leading-tight mt-0.5">18.4<span class="font-telemetry-unit text-telemetry-unit text-on-surface-variant font-normal">%</span></div>
+<div class="w-full bg-outline-variant/40 h-1 mt-1 rounded-[2px] overflow-hidden">
+<div class="bg-secondary h-full w-[18%]"></div>
+</div>
+</div>
+<!-- MEM Gauge -->
+<div class="bg-surface-container-lowest/80 border border-outline-variant/20 rounded-[4px] p-1.5">
+<div class="font-micro-tag text-micro-tag text-outline tracking-wider">RAM ALLOC</div>
+<div class="font-telemetry-value text-telemetry-value text-primary leading-tight mt-0.5">384<span class="font-telemetry-unit text-telemetry-unit text-on-surface-variant font-normal">MB</span></div>
+<div class="w-full bg-outline-variant/40 h-1 mt-1 rounded-[2px] overflow-hidden">
+<div class="bg-primary-container h-full w-[38%]"></div>
+</div>
+</div>
+<!-- Uptime Counter -->
+<div class="bg-surface-container-lowest/80 border border-outline-variant/20 rounded-[4px] p-1.5">
+<div class="font-micro-tag text-micro-tag text-outline tracking-wider">HL-CLOCK</div>
+<div class="font-telemetry-value text-telemetry-value text-tertiary leading-tight mt-0.5">9A4F<span class="font-telemetry-unit text-telemetry-unit text-on-surface-variant font-normal">.2</span></div>
+<div class="w-full bg-outline-variant/40 h-1 mt-1 rounded-[2px] overflow-hidden">
+<div class="bg-tertiary h-full w-[92%]"></div>
+</div>
+</div>
+</div>
+<!-- 4 Running Daemons Beacon Row -->
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="font-micro-tag text-micro-tag text-outline">ACTIVE MESH SLOTS (4/4)</span>
+<div class="flex items-center space-x-2">
+<div class="flex items-center space-x-1" title="cron.sync_vectors">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4edea3]"></span>
+<span class="font-micro-tag text-[8px] text-on-surface font-mono">cron.sync</span>
+</div>
+<div class="flex items-center space-x-1" title="watcher.mesh_pipe">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4edea3]"></span>
+<span class="font-micro-tag text-[8px] text-on-surface font-mono">watcher.pipe</span>
+</div>
+<div class="flex items-center space-x-1" title="eval.temporal_db">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4edea3]"></span>
+<span class="font-micro-tag text-[8px] text-on-surface font-mono">eval.db</span>
+</div>
+<div class="flex items-center space-x-1" title="agent.worker_pool">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#4edea3]"></span>
+<span class="font-micro-tag text-[8px] text-on-surface font-mono">agent.pool</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: ACTIVE SCRIPT DAEMONS MATRIX -->
+<section class="space-y-1.5">
+<div class="flex items-center justify-between px-0.5">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="hub">hub</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant font-bold">DAEMON MESH EXECUTION MATRIX</span>
+</div>
+<span class="font-micro-tag text-micro-tag text-secondary">SYNC: 100% HEALTH</span>
+</div>
+<!-- 2x2 Bento Matrix of Daemon Cards with 4px corners -->
+<div class="grid grid-cols-2 gap-2">
+<!-- Card 1: cron.sync_vectors -->
+<div class="bg-surface-container-low/75 border border-outline-variant/30 rounded-[4px] p-2 hover:border-primary-container/50 transition-colors relative group">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-micro-tag text-micro-tag text-primary">ID #DMN-01</span>
+<h4 class="font-label-caps text-label-caps text-on-surface font-bold tracking-tight">cron.sync_vectors</h4>
+</div>
+<span class="px-1 py-0.5 rounded-[2px] bg-secondary/15 text-secondary font-micro-tag text-[8px] border border-secondary/40 font-mono">
+                100ms
+              </span>
+</div>
+<div class="mt-2 pt-1.5 border-t border-outline-variant/20 flex justify-between items-center text-[10px] font-mono">
+<span class="text-outline">UP: 94h 12m</span>
+<span class="text-on-surface font-medium">42.1 MB</span>
+</div>
+<div class="mt-1 flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span class="font-micro-tag text-[8px] text-secondary">ZERO DRIFT</span>
+</div>
+<span class="font-micro-tag text-[8px] text-outline">Q: 0 OPS</span>
+</div>
+</div>
+<!-- Card 2: watcher.mesh_pipe -->
+<div class="bg-surface-container-low/75 border border-primary-container/30 rounded-[4px] p-2 glow-cyan relative group">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-micro-tag text-micro-tag text-primary">ID #DMN-02</span>
+<h4 class="font-label-caps text-label-caps text-on-surface font-bold tracking-tight">watcher.mesh_pipe</h4>
+</div>
+<span class="px-1 py-0.5 rounded-[2px] bg-primary-container/15 text-primary font-micro-tag text-[8px] border border-primary-container/40 font-mono">
+                EVENT
+              </span>
+</div>
+<div class="mt-2 pt-1.5 border-t border-outline-variant/20 flex justify-between items-center text-[10px] font-mono">
+<span class="text-outline">UP: 18h 04m</span>
+<span class="text-primary font-medium">118.4 MB</span>
+</div>
+<div class="mt-1 flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<span class="w-1 h-1 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-micro-tag text-[8px] text-primary">STREAMING</span>
+</div>
+<span class="font-micro-tag text-[8px] text-secondary">4.2k evt/s</span>
+</div>
+</div>
+<!-- Card 3: eval.temporal_db -->
+<div class="bg-surface-container-low/75 border border-outline-variant/30 rounded-[4px] p-2 hover:border-primary-container/50 transition-colors relative group">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-micro-tag text-micro-tag text-tertiary">ID #DMN-03</span>
+<h4 class="font-label-caps text-label-caps text-on-surface font-bold tracking-tight">eval.temporal_db</h4>
+</div>
+<span class="px-1 py-0.5 rounded-[2px] bg-tertiary-container/20 text-tertiary font-micro-tag text-[8px] border border-tertiary/40 font-mono">
+                1000ms
+              </span>
+</div>
+<div class="mt-2 pt-1.5 border-t border-outline-variant/20 flex justify-between items-center text-[10px] font-mono">
+<span class="text-outline">UP: 41h 55m</span>
+<span class="text-on-surface font-medium">89.0 MB</span>
+</div>
+<div class="mt-1 flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span class="font-micro-tag text-[8px] text-secondary">INDEX VALID</span>
+</div>
+<span class="font-micro-tag text-[8px] text-outline">BITEMP O(1)</span>
+</div>
+</div>
+<!-- Card 4: agent.worker_pool -->
+<div class="bg-surface-container-low/75 border border-outline-variant/30 rounded-[4px] p-2 hover:border-primary-container/50 transition-colors relative group">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-micro-tag text-micro-tag text-primary">ID #DMN-04</span>
+<h4 class="font-label-caps text-label-caps text-on-surface font-bold tracking-tight">agent.worker_pool</h4>
+</div>
+<span class="px-1 py-0.5 rounded-[2px] bg-secondary/15 text-secondary font-micro-tag text-[8px] border border-secondary/40 font-mono">
+                BURST
+              </span>
+</div>
+<div class="mt-2 pt-1.5 border-t border-outline-variant/20 flex justify-between items-center text-[10px] font-mono">
+<span class="text-outline">UP: 06h 29m</span>
+<span class="text-on-surface font-medium">134.5 MB</span>
+</div>
+<div class="mt-1 flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span class="font-micro-tag text-[8px] text-secondary">8 CORES</span>
+</div>
+<span class="font-micro-tag text-[8px] text-outline">IDLE 82%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: BITEMPORAL SCRUB TIMELINE -->
+<section class="bg-surface-container-low/90 border border-outline-variant/30 rounded-[4px] p-2.5 space-y-2">
+<!-- Dual Indices Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-primary text-[15px]" data-icon="history_toggle_off">history_toggle_off</span>
+<span class="font-label-caps text-label-caps text-on-surface font-bold">BITEMPORAL SCRUB ENGINE</span>
+</div>
+<div class="font-micro-tag text-micro-tag px-1.5 py-0.5 bg-surface-container-lowest rounded-[2px] border border-outline-variant/40 text-primary">
+            HLC: 0x9A4F2.4
+          </div>
+</div>
+<!-- Valid Time vs Transaction Time HUD Readouts -->
+<div class="grid grid-cols-2 gap-2 text-[10px] font-mono">
+<div class="bg-surface-container-lowest/90 p-1.5 rounded-[4px] border border-outline-variant/20">
+<div class="text-outline flex justify-between">
+<span>VALID TIME [VT]</span>
+<span class="text-secondary font-bold">2025-05-18T14:32:01.048Z</span>
+</div>
+<div class="text-[9px] text-on-surface-variant mt-0.5">EPOCH T-12.4s // DELTA ±0.00ms</div>
+</div>
+<div class="bg-surface-container-lowest/90 p-1.5 rounded-[4px] border border-outline-variant/20">
+<div class="text-outline flex justify-between">
+<span>TX TIME [TT]</span>
+<span class="text-primary font-bold">2025-05-18T14:32:13.448Z</span>
+</div>
+<div class="text-[9px] text-on-surface-variant mt-0.5">COMMITTED RECORD // SNAP-OK</div>
+</div>
+</div>
+<!-- Instrumented Timeline Scrub Bar -->
+<div class="space-y-1 pt-1">
+<div class="relative h-6 bg-surface-container-lowest rounded-[4px] border border-outline-variant/30 flex items-center px-1 overflow-hidden">
+<!-- Timeline Hashmarks -->
+<div class="absolute inset-0 flex justify-between items-center px-2 opacity-30 pointer-events-none">
+<span class="w-[1px] h-3 bg-outline"></span>
+<span class="w-[1px] h-2 bg-outline"></span>
+<span class="w-[1px] h-2 bg-outline"></span>
+<span class="w-[1px] h-3 bg-outline"></span>
+<span class="w-[1px] h-2 bg-outline"></span>
+<span class="w-[1px] h-2 bg-outline"></span>
+<span class="w-[1px] h-4 bg-primary"></span>
+<span class="w-[1px] h-2 bg-outline"></span>
+<span class="w-[1px] h-2 bg-outline"></span>
+<span class="w-[1px] h-3 bg-secondary"></span>
+</div>
+<!-- Active Buffer Track -->
+<div class="absolute left-0 top-0 bottom-0 bg-primary/10 w-[72%] border-r border-primary/40"></div>
+<!-- Scrub Handle with Glowing Halo -->
+<div class="absolute left-[72%] -translate-x-1/2 flex flex-col items-center cursor-pointer z-10">
+<div class="w-3.5 h-4.5 bg-primary-container rounded-[2px] shadow-[0_0_12px_#38bdf8] flex items-center justify-center border border-white/60">
+<span class="w-0.5 h-2 bg-surface-container-lowest"></span>
+</div>
+</div>
+</div>
+<!-- Scrub Step Buttons & Scrubber Label -->
+<div class="flex items-center justify-between pt-0.5">
+<div class="flex items-center space-x-1">
+<button aria-label="Step Back 100ms" class="px-2 py-0.5 bg-surface-container-lowest hover:bg-surface-container-high border border-outline-variant/40 rounded-[4px] text-outline hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined text-[13px]" data-icon="fast_rewind">fast_rewind</span>
+<span class="font-micro-tag text-[8px] ml-0.5">-100ms</span>
+</button>
+<button aria-label="Step Back 1 Frame" class="px-2 py-0.5 bg-surface-container-lowest hover:bg-surface-container-high border border-outline-variant/40 rounded-[4px] text-outline hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined text-[13px]" data-icon="chevron_left">chevron_left</span>
+</button>
+</div>
+<div class="font-label-caps text-[10px] text-primary tracking-tight font-semibold">
+              T-12.4s → <span class="text-secondary font-bold animate-pulse">LIVE</span>
+</div>
+<div class="flex items-center space-x-1">
+<button aria-label="Step Forward 1 Frame" class="px-2 py-0.5 bg-surface-container-lowest hover:bg-surface-container-high border border-outline-variant/40 rounded-[4px] text-outline hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined text-[13px]" data-icon="chevron_right">chevron_right</span>
+</button>
+<button aria-label="Jump to Live" class="px-2 py-0.5 bg-primary/10 border border-primary/40 rounded-[4px] text-primary hover:bg-primary/20 transition-colors flex items-center">
+<span class="font-micro-tag text-[8px] mr-0.5">NOW</span>
+<span class="material-symbols-outlined text-[13px]" data-icon="fast_forward">fast_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: EXECUTION LOGS CARD -->
+<section class="bg-surface-container-low/95 border border-outline-variant/30 rounded-[4px] p-2.5 space-y-2 relative overflow-hidden">
+<!-- Header & Terminal Filter Controls -->
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-2">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-secondary text-[15px]" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps text-on-surface font-bold">STDOUT / STDERR EXEC STREAM</span>
+</div>
+<!-- Auto-scroll lock toggle -->
+<div class="flex items-center space-x-1">
+<button aria-label="Autoscroll Locked" class="flex items-center space-x-1 px-1.5 py-0.5 rounded-[4px] bg-secondary/10 border border-secondary/30 text-secondary">
+<span class="material-symbols-outlined text-[11px]" data-icon="lock">lock</span>
+<span class="font-micro-tag text-[8px]">AUTOLOCK</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips Bar -->
+<div class="flex items-center space-x-1.5">
+<span class="font-micro-tag text-[9px] text-outline mr-1">FILTER:</span>
+<button class="px-2 py-0.5 rounded-[4px] bg-primary text-surface-container-lowest font-micro-tag text-[8px] font-bold">
+            ALL (48)
+          </button>
+<button class="px-2 py-0.5 rounded-[4px] bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant hover:text-on-surface font-micro-tag text-[8px]">
+            ERRORS (0)
+          </button>
+<button class="px-2 py-0.5 rounded-[4px] bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant hover:text-on-surface font-micro-tag text-[8px]">
+            DAEMONS (4)
+          </button>
+<button class="px-2 py-0.5 rounded-[4px] bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant hover:text-on-surface font-micro-tag text-[8px]">
+            HOOKS
+          </button>
+</div>
+<!-- Monospace Real-time Terminal Window with Scanline -->
+<div class="relative rounded-[4px] bg-surface-container-lowest border border-outline-variant/20 p-2 font-mono text-[10px] space-y-1.5 h-36 overflow-y-auto hud-scanline">
+<!-- Log Line 1 -->
+<div class="flex items-start space-x-1.5 text-on-surface-variant leading-tight">
+<span class="text-outline/70 select-none">14:32:10.01</span>
+<span class="px-1 py-0.2 rounded-[2px] bg-primary/10 text-primary border border-primary/30 text-[8px] font-bold">[INFO]</span>
+<span class="text-on-surface">apollo.mesh: peer 0x7F2A handshook via WireGuard-LL.</span>
+</div>
+<!-- Log Line 2 -->
+<div class="flex items-start space-x-1.5 text-on-surface-variant leading-tight">
+<span class="text-outline/70 select-none">14:32:11.42</span>
+<span class="px-1 py-0.2 rounded-[2px] bg-secondary/10 text-secondary border border-secondary/30 text-[8px] font-bold">[EXEC]</span>
+<span class="text-on-surface">cron.sync_vectors: flushed 1,420 dual-epoch tensor slices.</span>
+</div>
+<!-- Log Line 3 -->
+<div class="flex items-start space-x-1.5 text-on-surface-variant leading-tight">
+<span class="text-outline/70 select-none">14:32:12.18</span>
+<span class="px-1 py-0.2 rounded-[2px] bg-secondary/10 text-secondary border border-secondary/30 text-[8px] font-bold">[EXEC]</span>
+<span class="text-on-surface">watcher.pipe: received RPC batch 0xDEADBEEF -&gt; ack 0.04ms.</span>
+</div>
+<!-- Log Line 4 -->
+<div class="flex items-start space-x-1.5 text-on-surface-variant leading-tight">
+<span class="text-outline/70 select-none">14:32:12.89</span>
+<span class="px-1 py-0.2 rounded-[2px] bg-tertiary/10 text-tertiary border border-tertiary/30 text-[8px] font-bold">[EVAL]</span>
+<span class="text-on-surface">eval.temporal_db: snapshot written to cold ledger slot #8892.</span>
+</div>
+<!-- Log Line 5 -->
+<div class="flex items-start space-x-1.5 text-on-surface-variant leading-tight">
+<span class="text-outline/70 select-none">14:32:13.44</span>
+<span class="px-1 py-0.2 rounded-[2px] bg-primary/10 text-primary border border-primary/30 text-[8px] font-bold">[INFO]</span>
+<span class="text-primary font-semibold">agent.worker_pool: queue idle; standing by for IPC triggers...</span>
+</div>
+<!-- Log Line Active cursor -->
+<div class="flex items-center space-x-1 text-primary text-[10px]">
+<span>&gt;</span>
+<span class="inline-block w-1.5 h-3 bg-primary animate-pulse"></span>
+</div>
+</div>
+</section>
+<!-- SECTION 5: COMMAND ACTION BAR & INSTRUMENT CONTROLS -->
+<section class="space-y-1.5">
+<div class="flex items-center justify-between px-0.5">
+<span class="font-label-caps text-label-caps text-outline tracking-wider font-bold">TACTICAL CONTROLS // 4PX CORNERS</span>
+<span class="font-micro-tag text-micro-tag text-outline">CH-01 [OVERRIDE READY]</span>
+</div>
+<div class="grid grid-cols-12 gap-2">
+<!-- STOP ALL / ABORT Button (Ruby caution outline) -->
+<button aria-label="Abort all running daemons" class="col-span-4 bg-surface-container-lowest hover:bg-error-container/20 border border-error/70 text-error active:scale-95 transition-all duration-150 rounded-[4px] py-2.5 px-2 flex flex-col items-center justify-center space-y-0.5 glow-ruby">
+<span class="material-symbols-outlined text-[18px]" data-icon="dangerous">dangerous</span>
+<span class="font-label-caps text-[10px] font-bold tracking-tight">STOP ALL</span>
+<span class="font-micro-tag text-[8px] text-error/80 uppercase">ABORT DAEMONS</span>
+</button>
+<!-- PAUSE STREAM Button -->
+<button aria-label="Pause execution stream" class="col-span-3 bg-surface-container hover:bg-surface-container-high border border-outline-variant text-on-surface active:scale-95 transition-all duration-150 rounded-[4px] py-2.5 px-1.5 flex flex-col items-center justify-center space-y-0.5">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="pause_circle">pause_circle</span>
+<span class="font-label-caps text-[10px] font-bold tracking-tight">PAUSE</span>
+<span class="font-micro-tag text-[8px] text-outline uppercase">STREAM</span>
+</button>
+<!-- EXECUTE DAEMON / RUN SCRIPT Button (Luminous cyan fill with obsidian label) -->
+<button aria-label="Run script or daemon" class="col-span-5 bg-primary-container hover:bg-primary-fixed border border-primary text-surface-container-lowest active:scale-95 transition-all duration-150 rounded-[4px] py-2.5 px-2 flex flex-col items-center justify-center space-y-0.5 shadow-[0_0_16px_rgba(56,189,248,0.45)]">
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px] font-bold" data-icon="play_arrow">play_arrow</span>
+<span class="font-headline-sm text-sm font-bold tracking-wider">EXECUTE</span>
+</div>
+<span class="font-micro-tag text-[8px] tracking-widest font-extrabold uppercase">RUN SCRIPT DAEMON</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BOTTOM SHARED DOCK NAVIGATION (From Shared Components JSON) -->
+<!-- Active Intent: HUD screen corresponds directly to index 0 "HUD" -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-8 max-w-md mx-auto bg-surface-container-lowest/85 dark:bg-surface-container-lowest/85 backdrop-blur-2xl border-t border-outline-variant/30 dark:border-outline-variant/30 shadow-lg shadow-black/80 docked full-width bottom-0">
+<!-- Tab 1: HUD (ACTIVE MATCH) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary dark:text-primary font-bold space-y-1 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)] active:scale-90 transition-transform duration-100" href="#hud">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-caps font-label-caps tracking-widest text-[9px]">HUD</span>
+</a>
+<!-- Tab 2: TELEMETRY (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline space-y-1 hover:text-primary dark:hover:text-primary transition-colors duration-150 active:scale-90 transition-transform duration-100" href="#telemetry">
+<span class="material-symbols-outlined text-[20px]" data-icon="speed">speed</span>
+<span class="text-label-caps font-label-caps tracking-widest text-[9px]">TELEMETRY</span>
+</a>
+<!-- Tab 3: GRID (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline space-y-1 hover:text-primary dark:hover:text-primary transition-colors duration-150 active:scale-90 transition-transform duration-100" href="#grid">
+<span class="material-symbols-outlined text-[20px]" data-icon="grid_view">grid_view</span>
+<span class="text-label-caps font-label-caps tracking-widest text-[9px]">GRID</span>
+</a>
+<!-- Tab 4: TERMINAL (INACTIVE) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline space-y-1 hover:text-primary dark:hover:text-primary transition-colors duration-150 active:scale-90 transition-transform duration-100" href="#terminal">
+<span class="material-symbols-outlined text-[20px]" data-icon="code">code</span>
+<span class="text-label-caps font-label-caps tracking-widest text-[9px]">TERMINAL</span>
+</a>
+</nav>
+</div>
+</body></html>

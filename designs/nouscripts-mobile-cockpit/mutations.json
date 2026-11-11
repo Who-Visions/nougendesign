@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Dynamic Contrast Mode",
+    "hypothesis": "Enhance readability across ambient lighting conditions on mobile cockpits by shifting between deep obsidian (#0a0e17) and tactical graphite (#181b25) containers with 14.9:1 text-to-ground contrast.",
+    "tokens": {
+      "primaryBg": "#0a0e17",
+      "accent": "#38bdf8",
+      "text": "#dfe2ef",
+      "fontSize": "14sp",
+      "contrastRatio": 14.946
+    }
+  },
+  {
+    "name": "Contextual Syntax Highlighting",
+    "hypothesis": "Reduce parsing cognitive load by color-coding terminal logs, bash error codes, and python tracebacks with Material You status tokens.",
+    "tokens": {
+      "keywordColor": "#7bd0ff",
+      "stringColor": "#4edea3",
+      "functionColor": "#d5c3ff",
+      "errorColor": "#ffb4ab",
+      "tokenPadding": "2dp"
+    }
+  },
+  {
+    "name": "Gesture-Driven Execution Flow",
+    "hypothesis": "Enable rapid script navigation, kill-switch triggers, and execution restart on touch screens via single LazyColumn vertical hierarchy.",
+    "tokens": {
+      "swipeThreshold": "50px",
+      "buttonSize": "48dp",
+      "animationDuration": "150ms",
+      "fontWeight": "600",
+      "borderRadius": "4px"
+    }
+  }
+]
