@@ -1,0 +1,412 @@
+{
+ "mesh_version": "1",
+ "repo": "design",
+ "schema": "nougen-tools/1",
+ "tools": [
+  {
+   "args": {
+    "properties": {
+     "spec": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "spec"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nougendesigns.py",
+    "lint",
+    "{spec}"
+   ],
+   "description": "Lint a design.json against the anti-slop rules and WCAG contrast pairs; prints JSON.",
+   "name": "lint",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "css": {
+      "type": "string"
+     },
+     "spec": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "spec",
+     "css"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nougendesigns.py",
+    "lint",
+    "{spec}",
+    "--css",
+    "{css}"
+   ],
+   "description": "Lint a design.json against a stylesheet's CSS; prints JSON.",
+   "name": "lint_css",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "output": {
+      "type": "string"
+     },
+     "spec": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "spec",
+     "output"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nougendesigns.py",
+    "check",
+    "{spec}",
+    "{output}"
+   ],
+   "description": "Check that a compiled design package matches its design.json; prints JSON {passed, stale}.",
+   "name": "check",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "output": {
+      "type": "string"
+     },
+     "spec": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "spec",
+     "output"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nougendesigns.py",
+    "compile",
+    "{spec}",
+    "{output}"
+   ],
+   "description": "Compile design.json into DESIGN.md, tokens.css, manifest.json and mutations.json in output.",
+   "name": "compile",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "source": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "source"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nougendesigns.py",
+    "inspect",
+    "{source}"
+   ],
+   "description": "Inspect a source tree or file for design evidence; prints JSON.",
+   "name": "inspect",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "brief": {
+      "type": "string"
+     },
+     "output": {
+      "type": "string"
+     },
+     "source": {
+      "type": "string"
+     },
+     "spec": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "source",
+     "brief",
+     "spec",
+     "output"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nougendesigns.py",
+    "analyze",
+    "{source}",
+    "{brief}",
+    "{spec}",
+    "{output}"
+   ],
+   "description": "Build a deterministic review draft from source, brief and a reviewed design.json into output; prints JSON.",
+   "name": "analyze",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "after": {
+      "type": "string"
+     },
+     "before": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "before",
+     "after"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nougendesigns.py",
+    "diff",
+    "{before}",
+    "{after}"
+   ],
+   "description": "Diff two design.json files; prints JSON of changed keys.",
+   "name": "diff",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "seed": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "seed"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nougendesigns.py",
+    "discover",
+    "{seed}"
+   ],
+   "description": "Find bounded arXiv design candidates for one seed (network); writes designs/discovery.json, never a design package.",
+   "name": "discover",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "package": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "package"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/nyx_morph.py",
+    "{package}"
+   ],
+   "description": "Translate a design package's tokens into the Nyx UI dialect; prints JSON.",
+   "name": "nyx_morph",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {},
+    "required": [],
+    "type": "object"
+   },
+   "argv": [
+    "python3",
+    "tools/sync_from_shards.py",
+    "--check"
+   ],
+   "description": "Compare this mirror with the NouGenShards checkout the mesh finds; exit 1 lists the drift.",
+   "name": "shards_drift",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {},
+    "required": [],
+    "type": "object"
+   },
+   "argv": [
+    "bun",
+    "stitch/src/cli.ts",
+    "projects"
+   ],
+   "description": "List Google Stitch projects (needs STITCH_API_KEY or a NouGenShards Keymaker).",
+   "name": "stitch_projects",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "project_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "project_id"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "bun",
+    "stitch/src/cli.ts",
+    "screens",
+    "{project_id}"
+   ],
+   "description": "List the screens of a Stitch project.",
+   "name": "stitch_screens",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "out_dir": {
+      "type": "string"
+     },
+     "project_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "project_id"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "bun",
+    "stitch/src/cli.ts",
+    "download",
+    "{project_id}",
+    "{out_dir?}"
+   ],
+   "description": "Download a Stitch project's assets to out_dir (default downloads/<project_id>).",
+   "name": "stitch_download",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "out_dir": {
+      "type": "string"
+     },
+     "project_id": {
+      "type": "string"
+     },
+     "screen_id": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "project_id",
+     "screen_id"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "bun",
+    "stitch/src/cli.ts",
+    "get-screen",
+    "{project_id}",
+    "{screen_id}",
+    "{out_dir?}"
+   ],
+   "description": "Save one Stitch screen's code.html and screen.png to out_dir.",
+   "name": "stitch_get_screen",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "out_dir": {
+      "type": "string"
+     },
+     "project_id": {
+      "type": "string"
+     },
+     "prompt": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "project_id",
+     "prompt"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "bun",
+    "stitch/src/cli.ts",
+    "generate",
+    "{project_id}",
+    "{prompt}",
+    "{out_dir?}"
+   ],
+   "description": "Generate a new screen in a Stitch project from a prompt; assets to out_dir when given.",
+   "name": "stitch_generate",
+   "transport": "cli"
+  },
+  {
+   "args": {
+    "properties": {
+     "project_id": {
+      "type": "string"
+     },
+     "screen_id": {
+      "type": "string"
+     },
+     "slug": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "project_id",
+     "screen_id",
+     "slug"
+    ],
+    "type": "object"
+   },
+   "argv": [
+    "bun",
+    "stitch/src/cli.ts",
+    "export-to-nougen",
+    "{project_id}",
+    "{screen_id}",
+    "{slug}"
+   ],
+   "description": "Export a Stitch screen into designs/<slug>/ as a design package and lint it.",
+   "name": "stitch_export",
+   "transport": "cli"
+  }
+ ]
+}

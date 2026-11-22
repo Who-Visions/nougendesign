@@ -5,10 +5,16 @@ first and are copied here. Compares ignoring line endings.
 
     python tools/sync_from_shards.py <path-to-NouGenShards-checkout>          # copy
     python tools/sync_from_shards.py <path-to-NouGenShards-checkout> --check  # exit 1 on drift
+    python tools/sync_from_shards.py --check   # checkout found through the NouGen mesh
+
+Without a path, the checkout comes from the mesh: NOUGEN_SHARDS_DIR, then
+mesh.json repos.shards, then a sibling checkout of this repo.
 """
 import shutil
 import sys
 from pathlib import Path
+
+import nougen_mesh
 
 HERE = Path(__file__).resolve().parents[1]
 PATHS = [
@@ -34,10 +40,14 @@ def same(a: Path, b: Path) -> bool:
 
 def main(argv):
     args = [a for a in argv if not a.startswith("--")]
-    if len(args) != 1:
+    if len(args) > 1:
         print(__doc__)
         return 2
-    src = Path(args[0]).resolve()
+    found = Path(args[0]) if args else nougen_mesh.repo_dir("shards", near=__file__)
+    if found is None:
+        print("no NouGenShards checkout found: pass its path, or set NOUGEN_SHARDS_DIR")
+        return 2
+    src = found.resolve()
     if not (src / "tools" / "nougendesigns.py").is_file():
         print(f"not a NouGenShards checkout: {src}")
         return 2

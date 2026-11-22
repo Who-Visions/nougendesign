@@ -5,6 +5,7 @@ Official integration of the Google Stitch SDK (`@google/stitch-sdk`) into the No
 ## Capabilities
 
 - **Keymaker Vault Grounded**: Resolves `STITCH_API_KEY` directly from the local Keymaker vault (`shards_secrets.db`) with zero secret leakage in CLI parameters, environment files, or git commits.
+  The NouGenShards checkout that holds Keymaker is found at runtime through the NouGen mesh: `NOUGEN_SHARDS_DIR`, then `repos.shards` in `~/.nougen/mesh.json` (or `$NOUGEN_ROOT/mesh.json`), then a sibling checkout of this repo. Its `.venv` python is used when it has one, else `python3` on PATH.
 - **Authenticated Fetch Interceptor**: Injects `X-Goog-Api-Key` headers dynamically into all Stitch API calls and download endpoints (`https://stitch.googleapis.com/...`).
 - **Complete Project & Screen Orchestration**:
   - List all Stitch projects and inspect screen hierarchies.
