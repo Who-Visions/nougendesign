@@ -4,6 +4,8 @@
 `manifest.json`, prose-first `DESIGN.md`, `tokens.css`, and `mutations.json`.
 The latter is a reviewable mutation plan, not executable arbitrary code.
 
+Packages: `nougen-core` (fleet workbench), `nougenai-brand` (public NouGenAI brand surface), `nougen-capture`, `mono-violet`, `nougenmsg`, `nouscripts-mobile-cockpit`, `obsidian-singularity`, `sakura-bloom`.
+
 ```sh
 python tools/nougendesigns.py inspect ui/src
 python tools/nougendesigns.py compile designs/nougen-core/design.json designs/nougen-core
