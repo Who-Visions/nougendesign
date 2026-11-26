@@ -55,6 +55,12 @@ def validate(spec):
     for item in evidence:
         if not isinstance(item, dict) or item.get('kind') not in ('observed', 'inferred', 'invented') or not item.get('source'):
             errors.append('evidence requires kind and source')
+        if isinstance(item, dict) and 'asset' in item:
+            asset = item['asset']
+            if (not isinstance(asset, dict) or not isinstance(asset.get('path'), str) or not asset['path']
+                    or not isinstance(asset.get('sha256'), str)
+                    or not re.fullmatch(r'[0-9a-f]{64}', asset['sha256'])):
+                errors.append('asset record requires path and lowercase sha256')
     if not spec.get('contrastPairs'):
         errors.append('contrastPairs required')
     return errors
@@ -121,6 +127,32 @@ def lint(spec, css=''):
     if css and 'prefers-reduced-motion' not in css:
         errors.append('reduced-motion policy missing')
     return {'passed': not errors, 'errors': errors, 'contrast': ratios}
+
+def check_assets(spec, base):
+    """Fail when a sha256-pinned asset in evidence no longer matches its file.
+
+    Asset paths resolve relative to base (the directory holding the spec).
+    Specs without asset records return no errors, so existing packages are
+    unaffected.
+    """
+    errors = []
+    base = Path(base)
+    for item in spec.get('evidence', []):
+        if not isinstance(item, dict) or not isinstance(item.get('asset'), dict):
+            continue
+        asset = item['asset']
+        path, pinned = asset.get('path'), asset.get('sha256')
+        if not path or not pinned:
+            errors.append('asset record requires path and sha256')
+            continue
+        target = base / path
+        if not target.is_file():
+            errors.append(f'asset missing: {path}')
+            continue
+        found = hashlib.sha256(target.read_bytes()).hexdigest()
+        if found != pinned:
+            errors.append(f'asset changed: {path} (pinned {pinned[:12]}, found {found[:12]})')
+    return errors
 
 def inspect_source(path):
     path = Path(path)
@@ -311,7 +343,11 @@ def main():
     files = render(spec)
     if args.command == 'check':
         stale = [name for name, body in files.items() if not (args.output / name).exists() or (args.output / name).read_text(encoding='utf-8') != body]
-        print(canonical({'passed': not stale, 'stale': stale})); return int(bool(stale))
+        asset_errors = check_assets(spec, args.spec.parent)
+        report = {'passed': not stale and not asset_errors, 'stale': stale}
+        if any(isinstance(item, dict) and 'asset' in item for item in spec.get('evidence', [])):
+            report['assetErrors'] = asset_errors
+        print(canonical(report)); return int(not report['passed'])
     args.output.mkdir(parents=True, exist_ok=True)
     for name, body in files.items():
         (args.output / name).write_text(body, encoding='utf-8', newline='\n')

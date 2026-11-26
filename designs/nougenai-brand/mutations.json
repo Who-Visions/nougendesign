@@ -1,0 +1,22 @@
+[
+  {
+    "change": "Place the pinned N pin asset (assets/n-pin.webp) at byte parity on its black ground; never redraw, re-render, recolour, filter or CSS-approximate it.",
+    "selector": ".brand-mark"
+  },
+  {
+    "change": "Visible gold keyboard outline.",
+    "selector": ":focus-visible"
+  },
+  {
+    "change": "Gold is a highlight only: rules, ticks, numerals and keylines. Never a background field.",
+    "selector": ".accent-rule"
+  },
+  {
+    "change": "Shards purple belongs to the shards system; on brand surfaces it appears only where shard or memory content itself is the subject.",
+    "selector": ".shard-surface"
+  },
+  {
+    "change": "One message per region; brand green carries identity and the primary action only.",
+    "selector": ".hero"
+  }
+]

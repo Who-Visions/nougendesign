@@ -1,0 +1,56 @@
+{
+  "description": "The public NouGenAI brand surface: green-led, gold-highlighted, shards purple as the named secondary system.",
+  "dialect": "nougendesigns/v0",
+  "entry": {
+    "prose": "DESIGN.md",
+    "tokens": "tokens.css"
+  },
+  "name": "nougenai-brand",
+  "provenance": [
+    {
+      "kind": "observed",
+      "note": "NouGenAI is green with gold highlights; shards are purple. Keep it restrained — 'don't mardi gras it.' The palette relationships and the restraint rule are locks; this package encodes them, it does not originate them.",
+      "source": "Dave brand palette ruling, 2026-11-23 (standing fleet memory)"
+    },
+    {
+      "kind": "observed",
+      "note": "The glowing green N pin on Nou's chest is the logo, at one-to-one parity; approved and set as the NouGenAI channel profile picture (@NouGenAI-n9w) and verified live. This is why the mark is a pinned asset, never a redraw target.",
+      "source": "NouGenAI channel logo ruling, 2026-11-22"
+    },
+    {
+      "asset": {
+        "path": "assets/n-pin.webp",
+        "sha256": "bd59268fec8cf400697146d8688cc5aff19efc2f51cd4c9845cf84a98169f918"
+      },
+      "kind": "observed",
+      "note": "The N pin asset, pinned byte-for-byte into this package. Dominant face colour measured by sampling the 1600x1600 source: cluster #72fd7c-#75fe7f; the --brand token takes #73fd7c from that measurement.",
+      "source": "workspace/imagine_media/media-generation-nougenai-logo-pin-parity-0-909b376f-bcd9-496f-9e53-2b4f24077bda.webp"
+    },
+    {
+      "kind": "observed",
+      "note": "The first fleet surface styled from the palette locks: NouGenAI green/gold for healthy, red for blocked/stale, purple for relay. Its success was one careful lane working from prose memory; this package exists so the next lane loads spec instead.",
+      "source": "Fleet Boards Space (fleet-boards), built and verified 2026-11-25"
+    },
+    {
+      "kind": "inferred",
+      "note": "Build-the-system-once and pin-the-mark modules supply this package's form: a reviewed spec compiled deterministically, with the mark carried as a sha256-pinned asset that check verifies. The course's practices are candidates until Dave rules; the locks above are his, not the course's.",
+      "source": "claude-design-reversal.md, Modules 1 and 5 (Google Doc 1SbbZuwbMzUvpjGXHB_Vu0WbfkxpMvV6dIotbk4KfPE4; fleet shard 30224@db4)"
+    },
+    {
+      "kind": "invented",
+      "note": "INVENTED — Dave's review surface: every specific hex except --brand (measured from the mark): the near-black ground family, the gold #d4af37 and its light-theme derivation #8a6414, the shard purples #a78bfa / #6d28d9, all status triples, the light theme as a whole, the 2/3/4px radii, the rem spacing scale, type sizes, --page-width 80rem, and the system-ui/Consolas font stacks (no brand font has been ruled). Each is a candidate chosen to satisfy the locks and the contrast gates, not a settled value.",
+      "source": "nougenai-brand authoring pass, 2026-11-25"
+    }
+  ],
+  "schemaVersion": "od-design-system-project/v1",
+  "sourceDigest": "d55852da5f45332a6f2efcd8dc2afd21eedfb408152968de3029436bf9150e55",
+  "surfaces": {
+    "ground": "--bg",
+    "ink": "--text"
+  },
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "version": "0.1.0"
+}

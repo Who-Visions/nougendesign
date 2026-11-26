@@ -1,3 +1,4 @@
+import hashlib
 import importlib.util
 import json
 import tempfile
@@ -54,6 +55,28 @@ class DesignTests(unittest.TestCase):
         for value in ('background:linear-gradient(red,blue)', 'backdrop-filter:blur(4px)', 'border-radius:999px', 'box-shadow:0 0 12px red'):
             result = design.lint(self.spec, 'a:focus-visible{} /* prefers-reduced-motion */ a{' + value + ';}')
             self.assertTrue(any('anti-slop' in error for error in result['errors']))
+
+    def test_asset_pinning_passes_then_fails_on_byte_change(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'assets').mkdir()
+            target = root / 'assets' / 'mark.bin'
+            target.write_bytes(b'pinned mark bytes')
+            spec = dict(self.spec)
+            spec['evidence'] = [{'kind': 'observed', 'source': 'test fixture',
+                                 'asset': {'path': 'assets/mark.bin',
+                                           'sha256': hashlib.sha256(b'pinned mark bytes').hexdigest()}}]
+            self.assertEqual(design.validate(spec), [])
+            self.assertEqual(design.check_assets(spec, root), [])
+            target.write_bytes(b'tampered bytes')
+            self.assertTrue(any('asset changed' in error for error in design.check_assets(spec, root)))
+            target.unlink()
+            self.assertTrue(any('asset missing' in error for error in design.check_assets(spec, root)))
+
+    def test_asset_record_shape_is_validated(self):
+        spec = dict(self.spec)
+        spec['evidence'] = [{'kind': 'observed', 'source': 'test fixture', 'asset': {'path': 'assets/mark.bin'}}]
+        self.assertTrue(any('asset record' in error for error in design.validate(spec)))
 
     def test_binary_reference_is_not_claimed_as_visual_extraction(self):
         with tempfile.TemporaryDirectory() as directory:
