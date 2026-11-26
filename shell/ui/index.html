@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NouGenDesign — Shell</title>
+<link rel="stylesheet" href="shell.css">
+</head>
+<body>
+<header class="shell-head">
+  <div>
+    <h1>NouGenDesign <span class="shell-tag">shell · Tauri (Rust) · ADR 0001</span></h1>
+    <p class="shell-sub">Load package → render surface → explore tweaks → lock variants → run verify.
+       The shell holds no design state; packages, plans and findings live in the repo's stores.</p>
+  </div>
+  <div class="shell-mode" id="shell-mode">standalone snapshot</div>
+</header>
+
+<main class="shell-grid">
+  <!-- Verb 1: Load package -->
+  <section class="panel" id="panel-package">
+    <h2>1 · Load package</h2>
+    <button id="btn-load" type="button">Load package</button>
+    <dl class="kv">
+      <dt>Package</dt><dd id="pkg-name">nougenai-brand</dd>
+      <dt>Dialect</dt><dd id="pkg-dialect">nougendesigns/v0</dd>
+      <dt>Description</dt><dd id="pkg-desc">The public NouGenAI brand surface: green-led, gold-highlighted, shards purple as the named secondary system.</dd>
+      <dt>Themes</dt><dd id="pkg-themes">dark, light</dd>
+      <dt>Tokens</dt><dd id="pkg-tokens">—</dd>
+      <dt>Read from</dt><dd id="pkg-source">designs/nougenai-brand (compiled outputs, read-only)</dd>
+    </dl>
+    <p class="note">The shell reads compiled outputs (<code>design.json</code>, <code>manifest.json</code>).
+       It never edits package sources — sources live in the shards and compile through
+       <code>tools/nougendesigns.py</code>.</p>
+  </section>
+
+  <!-- Verb 3: Explore tweaks -->
+  <section class="panel" id="panel-tweaks">
+    <h2>2 · Explore tweaks</h2>
+    <p class="note">Bounded exploration space from <code>tweaks/manifest.json</code>
+       (dialect <code>tweaks/v1</code>, status: candidate). Exploring changes nothing;
+       settling produces a candidate variant plan that only Dave's lock can apply.</p>
+    <ul class="dim-list" id="tweak-list">
+      <li><strong>Colour theme</strong> <span class="dim-meta">theme · default base · 2 options</span></li>
+      <li><strong>Emphasis colour</strong> <span class="dim-meta">token-enum · default gold · 2 options</span></li>
+      <li><strong>Board density</strong> <span class="dim-meta">token-step · default --cluster-gap · 3 steps</span></li>
+      <li><strong>Stale row treatment</strong> <span class="dim-meta">choice · default shout · 2 options</span></li>
+      <li><strong>Card style</strong> <span class="dim-meta">choice · default flat · 3 options</span></li>
+    </ul>
+  </section>
+
+  <!-- Verb 4a: Variant plans -->
+  <section class="panel" id="panel-variants">
+    <h2>3 · Variant plans</h2>
+    <p class="note">Stored plans are inert candidates. There is deliberately
+       <strong>no apply command</strong> in the shell: a plan takes effect only when Dave
+       names it as locked, through the reviewed-spec flow.</p>
+    <ul class="plan-list" id="variant-list">
+      <li><strong>boards-chips-status-keyline</strong> <span class="dim-meta">candidate · 5 mutations</span></li>
+      <li><strong>boards-density-compact</strong> <span class="dim-meta">candidate · 3 mutations</span></li>
+      <li><strong>boards-explored-quiet-compact</strong> <span class="dim-meta">candidate · 2 mutations</span></li>
+      <li><strong>boards-stale-quiet</strong> <span class="dim-meta">candidate · 4 mutations</span></li>
+      <li><strong>boards-urgent-gold-rule</strong> <span class="dim-meta">candidate · 3 mutations</span></li>
+    </ul>
+  </section>
+
+  <!-- Verb 4b: Verify -->
+  <section class="panel" id="panel-verify">
+    <h2>4 · Verify</h2>
+    <p><strong>Gate of record:</strong> <span id="verify-gate">headless reference renderer
+       (<code>tools/visual_verify.py</code>)</span> — never this webview.</p>
+    <p class="note" id="verify-note">The shell's webview render is advisory (OS webviews differ per
+       platform). A variant is locked against the package and judged by the reference gate, so
+       webview variance can never change what passes. Verify therefore runs headlessly, not from
+       a button in the shell:</p>
+    <pre class="cmd" id="verify-cmd">python3 tools/visual_verify.py --package designs/nougenai-brand \
+  --html &lt;surface.html&gt; --out &lt;findings-dir&gt; \
+  --screenshot-cmd "weasyprint {html} {png}"</pre>
+    <p class="note">Last recorded proof run (Slice 3, Fleet Boards surface):
+       PASS — 37 findings, 0 fail, 2 warn, 35 info.</p>
+  </section>
+</main>
+
+<!-- Verb 2: Render surface -->
+<section class="panel surface-panel">
+  <h2>Surface — Fleet Boards, styled by the nougenai-brand package</h2>
+  <p class="note">Rendered content: the Slice 3 verify-proof surface, token-styled from the package's
+     compiled <code>tokens.css</code>. In the Tauri app this is the live webview render (advisory);
+     the gate of record is the headless renderer above.</p>
+  <iframe id="surface-frame" src="surface/brand-surface.html" title="Fleet Boards surface"></iframe>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fleet Boards — brand surface proof</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  @page { size: 1240px 900px; margin: 0; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--font-main); line-height: var(--line-body);
+    padding: var(--space-6);
+  }
+  header.masthead { display: flex; align-items: center; gap: var(--space-4);
+    border-bottom: 1px solid var(--line); padding-bottom: var(--space-4); }
+  .brand-mark img { width: 64px; height: 64px; display: block; }
+  .masthead h1 { font-size: 28px; margin: 0; }
+  .masthead .asof { margin-left: auto; color: var(--muted); font-family: var(--font-mono); font-size: 13px; }
+  .board-section { margin-top: var(--space-6); }
+  .board-section > header { display: flex; align-items: baseline; gap: var(--space-3); }
+  .board-section h2 { font-size: 18px; margin: 0; }
+  .board-section--urgent > header { border-bottom: 2px solid var(--accent); padding-bottom: var(--space-2); }
+  .board-count { color: var(--accent); font-family: var(--font-mono); font-weight: bold; }
+  .board-row { display: flex; align-items: center; gap: var(--space-3);
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius-md); padding: var(--space-3) var(--space-4);
+    margin-top: var(--space-2); }
+  .board-row .repo { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+  .board-row .title { flex: 1; }
+  .board-chip { font-size: 12px; font-family: var(--font-mono);
+    padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm);
+    border: 1px solid var(--line); white-space: nowrap; }
+  .chip-verified { background: var(--status-verified-bg); border-color: var(--status-verified-border); color: var(--status-verified-text); }
+  .chip-pending  { background: var(--status-pending-bg);  border-color: var(--status-pending-border);  color: var(--status-pending-text); }
+  .chip-conflict { background: var(--status-conflict-bg); border-color: var(--status-conflict-border); color: var(--status-conflict-text); }
+  .chip-offline  { background: var(--status-offline-bg);  border-color: var(--status-offline-border);  color: var(--status-offline-text); }
+  .board-row.is-stale { border-color: var(--status-conflict-border); }
+  .board-row.is-stale .board-age { color: var(--status-conflict-text); font-family: var(--font-mono); font-size: 12px; }
+  .shard-surface { border-color: var(--shard-deep); }
+  .shard-surface .relay-tag { color: var(--shard); font-family: var(--font-mono); font-size: 12px; }
+  .accent-rule { height: 2px; background: var(--accent); }
+  footer { margin-top: var(--space-6); color: var(--muted); font-size: 12px;
+    border-top: 1px solid var(--line); padding-top: var(--space-3); }
+</style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand-mark"><img src="n-pin.webp" alt="NouGenAI N pin"></div>
+    <h1>Fleet Boards</h1>
+    <div class="asof">as of 2026-11-25 18:09 ET · PR board + relay board</div>
+  </header>
+
+  <section class="board-section board-section--urgent">
+    <header><h2>Urgent</h2><span class="board-count">3</span></header>
+    <div class="board-row">
+      <span class="repo">Who-Visions/nougendesign</span>
+      <span class="title">PR #15 — brand package + asset pinning (slices 1, 2, 5)</span>
+      <span class="board-chip chip-pending">in-review</span>
+    </div>
+    <div class="board-row">
+      <span class="repo">nougenai/nougenshards-ngs</span>
+      <span class="title">PR #45 — Dav1d UBSan fix, awaiting rebase onto e1a3281</span>
+      <span class="board-chip chip-conflict">blocked</span>
+    </div>
+    <div class="board-row is-stale">
+      <span class="repo">Who-Visions/NouGenTasks</span>
+      <span class="title">PR #5 — calendar template, conflicts with main</span>
+      <span class="board-age">stale 3d</span>
+      <span class="board-chip chip-conflict">blocked</span>
+    </div>
+  </section>
+
+  <section class="board-section">
+    <header><h2>Moving</h2></header>
+    <div class="board-row">
+      <span class="repo">nougenai/nougenshards-ngs</span>
+      <span class="title">PR #63 — bitemporal valid-time, parked review-ready</span>
+      <span class="board-chip chip-verified">verdict-ready</span>
+    </div>
+    <div class="board-row">
+      <span class="repo">nougenai/nougenshards-ngs</span>
+      <span class="title">PR #64 — trigram + RRF, stacked on #61</span>
+      <span class="board-chip chip-pending">pr-open</span>
+    </div>
+    <div class="board-row">
+      <span class="repo">Who-Visions/NouGenTasks</span>
+      <span class="title">PR #9 — PR board in NouGenTasks, parked</span>
+      <span class="board-chip chip-offline">held-draft</span>
+    </div>
+    <div class="board-row shard-surface">
+      <span class="repo">relay</span>
+      <span class="title">Jeannie chase leg 20261125T202849Z — awaiting her answer</span>
+      <span class="relay-tag">shard system</span>
+      <span class="board-chip chip-pending">awaiting-answer</span>
+    </div>
+  </section>
+
+  <footer>
+    Brand surface proof for the visual verify gate — styled only from
+    designs/nougenai-brand tokens. Green leads; gold highlights; purple
+    appears only where shard content itself is the subject.
+  </footer>
+</body>
+</html>
