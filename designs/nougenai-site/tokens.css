@@ -1,0 +1,45 @@
+:root {
+  --accent: #CFAF5A;
+  --accent-2: #8B5E34;
+  --accent-rgb: 207, 175, 90;
+  --bg: #111111;
+  --bp-3xl: 120rem;
+  --bp-4xl: 160rem;
+  --bp-5xl: 240rem;
+  --bp-8k: 480rem;
+  --brand: #2F8F79;
+  --cluster-gap: 2rem;
+  --control-ink: #111111;
+  --danger: #C44E3A;
+  --focus: #CFAF5A;
+  --font-display: Syne, sans-serif;
+  --font-main: Inter, sans-serif;
+  --line: rgba(255, 255, 255, 0.05);
+  --line-body: 1.6;
+  --line-strong: rgba(255, 255, 255, 0.10);
+  --motion-marquee: 30s;
+  --motion-marquee-vertical: 60s;
+  --motion-progress: 6s;
+  --muted: #A6A29C;
+  --page-width: 87.5rem;
+  --panel: #1C1C1C;
+  --panel-2: rgba(28, 28, 28, 0.4);
+  --panel-hover: rgba(255, 255, 255, 0.05);
+  --panel-solid: #1C1C1C;
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --radius-sm: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 2.5rem;
+  --text: #F4F1EA;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
