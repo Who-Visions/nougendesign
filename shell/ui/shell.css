@@ -1,0 +1,37 @@
+/* Shell chrome styling. Deliberately neutral: the brand lives in the
+   rendered surface (package tokens), not in the shell's own furniture. */
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: #101216; color: #e8eaed;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.45; padding: 20px 24px 32px;
+}
+.shell-head { display: flex; align-items: flex-start; gap: 16px;
+  border-bottom: 1px solid #2a2f36; padding-bottom: 12px; }
+.shell-head h1 { font-size: 22px; margin: 0; }
+.shell-tag { font-size: 12px; color: #9aa3ad; font-weight: normal; }
+.shell-sub { color: #9aa3ad; margin: 6px 0 0; max-width: 75ch; font-size: 13px; }
+.shell-mode { margin-left: auto; font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px; color: #9aa3ad; border: 1px solid #2a2f36;
+  padding: 4px 8px; border-radius: 6px; white-space: nowrap; }
+.shell-grid { display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-top: 16px; }
+.panel { background: #171a1f; border: 1px solid #2a2f36; border-radius: 8px;
+  padding: 14px 16px; }
+.panel h2 { font-size: 15px; margin: 0 0 10px; }
+.kv { display: grid; grid-template-columns: 90px 1fr; gap: 4px 12px;
+  margin: 10px 0; font-size: 13px; }
+.kv dt { color: #9aa3ad; }
+.kv dd { margin: 0; }
+.note { color: #9aa3ad; font-size: 12.5px; }
+code { font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+button { background: #1f6f43; color: #fff; border: 0; border-radius: 6px;
+  padding: 6px 14px; font-size: 13px; cursor: pointer; }
+.dim-list, .plan-list { list-style: none; margin: 8px 0; padding: 0; font-size: 13.5px; }
+.dim-list li, .plan-list li { padding: 5px 0; border-bottom: 1px solid #22262d; }
+.dim-meta { color: #9aa3ad; font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+.cmd { background: #0c0e11; border: 1px solid #2a2f36; border-radius: 6px;
+  padding: 10px; font-size: 12px; overflow-x: auto; white-space: pre-wrap; }
+.surface-panel { margin-top: 16px; }
+#surface-frame { width: 100%; height: 880px; border: 1px solid #2a2f36;
+  border-radius: 6px; background: #fff; }

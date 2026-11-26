@@ -1,0 +1,10 @@
+[package]
+name = "nougendesign-shell-core"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Read-only package loading for the nougendesign shell: design packages, tweaks manifests, variant plans. No Tauri dependency; no writes, ever."
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

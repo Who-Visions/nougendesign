@@ -1,0 +1,105 @@
+{
+  "package": {
+    "name": "nougenai-brand",
+    "description": "The public NouGenAI brand surface: green-led, gold-highlighted, shards purple as the named secondary system.",
+    "dialect": "nougendesigns/v0",
+    "version": "0.1.0",
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "token_count": 57,
+    "source_dir": "../designs/nougenai-brand"
+  },
+  "tweaks": {
+    "manifest": "boards-exploration",
+    "dialect": "tweaks/v1",
+    "surface": "fleet-boards",
+    "status": "candidate",
+    "summary": "The bounded exploration space for the Fleet Boards surface: five dimensions Dave may flip while reviewing the boards, every one bound to the nougenai-brand package's own tokens, themes, or enumerated treatments. Exploring changes nothing; settling produces a candidate variant plan that only Dave's lock can apply.",
+    "dimensions": [
+      {
+        "id": "theme",
+        "label": "Colour theme",
+        "kind": "theme",
+        "default": "base",
+        "option_count": 2
+      },
+      {
+        "id": "accent-role",
+        "label": "Emphasis colour",
+        "kind": "token-enum",
+        "default": "gold",
+        "option_count": 2
+      },
+      {
+        "id": "density",
+        "label": "Board density",
+        "kind": "token-step",
+        "default": "--cluster-gap",
+        "option_count": 3
+      },
+      {
+        "id": "stale-treatment",
+        "label": "Stale row treatment",
+        "kind": "choice",
+        "default": "shout",
+        "option_count": 2
+      },
+      {
+        "id": "card-style",
+        "label": "Card style",
+        "kind": "choice",
+        "default": "flat",
+        "option_count": 3
+      }
+    ]
+  },
+  "variants": [
+    {
+      "id": "boards-chips-status-keyline",
+      "surface": "fleet-boards",
+      "status": "candidate",
+      "summary": "Stage chips gain a 3px status keyline on their leading edge, coloured by the package's status tokens, so a chip's state reads at scan distance without relying on the chip's text or fill alone.",
+      "lock_effect": "Every stage chip on both boards carries the keyline treatment permanently; chip fills stay flat panel tokens, and colour is never the only signal (the stage label remains printed on the chip).",
+      "mutation_count": 5
+    },
+    {
+      "id": "boards-density-compact",
+      "surface": "fleet-boards",
+      "status": "candidate",
+      "summary": "Boards-only density step: cluster gap and row padding tighten one step on the package's space scale so a full board (200+ PR rows) scans on one screen, while touch targets stay at the package minimum.",
+      "lock_effect": "Both boards render one density step tighter everywhere; the brand package's default density is unchanged for every other surface — this is a boards-local mutation, not a package change.",
+      "mutation_count": 3
+    },
+    {
+      "id": "boards-explored-quiet-compact",
+      "surface": "fleet-boards",
+      "status": "candidate",
+      "summary": "Explored via tweaks manifest 'boards-exploration': stale-treatment = quiet; density = --space-4.",
+      "lock_effect": "Locking makes the explored settings permanent on fleet-boards: stale-treatment = quiet; density = --space-4. Until then nothing has changed — exploration never applies.",
+      "mutation_count": 2
+    },
+    {
+      "id": "boards-stale-quiet",
+      "surface": "fleet-boards",
+      "status": "candidate",
+      "summary": "Rows stale past 48h stop shouting red: they drop to the muted offline treatment with a small gold STALE tick, reserving the conflict red for genuinely blocked rows only.",
+      "lock_effect": "On both boards, red means blocked and nothing else; staleness becomes a quiet muted row with a gold tick and the age printed, so Dave's eye goes to real blockers first.",
+      "mutation_count": 4
+    },
+    {
+      "id": "boards-urgent-gold-rule",
+      "surface": "fleet-boards",
+      "status": "candidate",
+      "summary": "The urgent section header carries the package's gold accent-rule and a gold count numeral, making the urgent block the one gold-ruled region on the board; all other section headers stay green-led and unruled.",
+      "lock_effect": "Gold appears on the boards in exactly one structural place — the urgent header rule and its count — so gold itself becomes the urgency signal fleet-wide.",
+      "mutation_count": 3
+    }
+  ],
+  "verify": {
+    "gate_of_record": "headless reference renderer (tools/visual_verify.py)",
+    "command": "python3 tools/visual_verify.py --package designs/nougenai-brand --html <surface.html> --out <findings-dir> --screenshot-cmd \"weasyprint {html} {png}\"",
+    "note": "The shell's webview render is advisory (OS webviews differ per platform). A variant is locked against the package and judged by the reference gate, so webview variance can never change what passes."
+  }
+}
