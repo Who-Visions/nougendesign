@@ -1,0 +1,44 @@
+{
+  "description": "The canon design tokens of nougenai.com, reversed from the live site's own theme: obsidian ground, carbon panels, ivory text, gold accent, emerald signal, Inter + Syne. Nou's Desk on /news is its first recorded surface.",
+  "dialect": "nougendesigns/v0",
+  "entry": {
+    "prose": "DESIGN.md",
+    "tokens": "tokens.css"
+  },
+  "name": "nougenai-site",
+  "provenance": [
+    {
+      "kind": "observed",
+      "note": "Every colour, font and breakpoint token in this package was extracted verbatim from the site's own theme: obsidian #111111, carbon #1C1C1C, gold #CFAF5A, copper #8B5E34, emerald #2F8F79, terracotta #C44E3A, ivory #F4F1EA, stone #A6A29C; Inter as --font-sans, Syne as --font-display; ultra-wide breakpoints 120/160/240/480rem; body ground obsidian, text ivory, line-height 1.6; focus outline gold 2px at 2px offset; selection gold on obsidian.",
+      "source": "Who-Visions/nougenai-next, src/app/globals.css @theme and @layer base, main at ea8229ee (2026-11-26)"
+    },
+    {
+      "kind": "observed",
+      "note": "The component idiom these tokens serve: carbon/40 blurred cards with white/5 borders, gold/10 pills with gold/20 borders, uppercase wide-tracked labels, Syne display type, marquee tickers (30s horizontal, 60s vertical), hero slide-progress 6s.",
+      "source": "Who-Visions/nougenai-next, src/app/news/NewsClient.tsx and src/app/news/[id]/ArticlePage.tsx (2026-11-26)"
+    },
+    {
+      "kind": "observed",
+      "note": "'Reverse the site's design tokens into Nougendesign so that it's canon.' This package is the canon record of nougenai.com's look and governs the site. The nougenai-brand package remains the candidate brand system for future surfaces (dav1d.nougenai.com named first) and does not override this canon on the site.",
+      "source": "Dave ruling, 2026-11-26"
+    },
+    {
+      "kind": "observed",
+      "note": "Nou's Desk — the first surface built and recorded against this canon: edition card, audio player, viewer-local weather chip and archive rows on /news, styled entirely from these tokens.",
+      "source": "Who-Visions/nougenai-next, branch nou/nous-desk, commit 8490012f (2026-11-26)"
+    },
+    {
+      "kind": "inferred",
+      "note": "Site token names were mapped onto nougendesigns/v0 dialect slots (--color-obsidian to --bg, --color-carbon to --panel, --color-ivory to --text, --color-stone to --muted, --color-gold to --accent, --color-copper to --accent-2, --color-emerald to --brand, --color-terracotta to --danger). Values are unchanged; only slot names moved. Translucent tokens (--panel-2, --line, --line-strong, --panel-hover) record the site's alpha idioms (bg-carbon/40, border-white/5 and /10, bg-white/5) in rgba form rather than as invented solids.",
+      "source": "nougenai-site authoring pass, 2026-11-26"
+    }
+  ],
+  "schemaVersion": "od-design-system-project/v1",
+  "sourceDigest": "cfcfc6a9528237f7d37c668baeae89d4ef30ecf704dbb6186ffc8b3e2353c022",
+  "surfaces": {
+    "ground": "--bg",
+    "ink": "--text"
+  },
+  "themes": [],
+  "version": "1.0.0"
+}

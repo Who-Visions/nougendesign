@@ -1,0 +1,26 @@
+[
+  {
+    "change": "Nou's Desk card on /news: carbon panel at 40% over obsidian with backdrop blur, 1px border in gold at 25%, a 4px gold top rule at 70%, radius 1.5rem; pinned above the live wire; renders nothing until the first edition is published.",
+    "selector": ".nou-desk"
+  },
+  {
+    "change": "The edition's audio sits under the deck as a native player, labelled 'Listen — Nou reads this edition' in gold at 60%, uppercase, wide tracking.",
+    "selector": ".nou-desk .edition-audio"
+  },
+  {
+    "change": "Viewer-local weather chip in the Desk header: the viewer's geolocation drives the site's /api/weather route; the West Palm Beach fallback is labelled '(desk location)'; coordinates are never stored.",
+    "selector": ".nou-desk .desk-weather"
+  },
+  {
+    "change": "Earlier editions list as quiet rows: emerald edition label, ivory title turning gold on hover, stone time at the right.",
+    "selector": ".nou-desk .archive-row"
+  },
+  {
+    "change": "Gold outline, 2px with 2px offset — the site's own base rule in globals.css.",
+    "selector": ":focus-visible"
+  },
+  {
+    "change": "Gold field, obsidian text.",
+    "selector": "::selection"
+  }
+]
