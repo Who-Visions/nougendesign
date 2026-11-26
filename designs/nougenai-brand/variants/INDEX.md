@@ -30,6 +30,17 @@ Every plan below is a **candidate**: stored, comparable, and inert. Nothing here
 | `.board-row` | Row vertical padding steps down from --space-3 to --space-2; row text stays at the standard body size and line height. |
 | `.board-chip, .board-row a, .board-row button` | Interactive targets do NOT shrink with density: minimum target stays --target-min (1.5rem), touch target stays --target-touch (2.75rem) per the package accessibility section. |
 
+## boards-explored-quiet-compact
+
+- Surface: `fleet-boards` · Package: `nougenai-brand` · Mutations: 2
+- What it does: Explored via tweaks manifest 'boards-exploration': stale-treatment = quiet; density = --space-4.
+- **Locking it means:** Locking makes the explored settings permanent on fleet-boards: stale-treatment = quiet; density = --space-4. Until then nothing has changed — exploration never applies.
+
+| Selector | Change |
+|---|---|
+| `.board-row.is-stale` | Stale rows drop to the muted offline treatment (ground --panel-2, text --muted) with the age printed and a gold tick in --accent; conflict red becomes blocked-only, and a row both stale and blocked renders as blocked with its age still printed. |
+| `.board` | Set the board cluster gap to 1rem (ladder step --space-4); touch targets do not shrink at any step. |
+
 ## boards-stale-quiet
 
 - Surface: `fleet-boards` · Package: `nougenai-brand` · Mutations: 4

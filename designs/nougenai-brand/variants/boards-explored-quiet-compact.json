@@ -1,0 +1,18 @@
+{
+  "lock_effect": "Locking makes the explored settings permanent on fleet-boards: stale-treatment = quiet; density = --space-4. Until then nothing has changed \u2014 exploration never applies.",
+  "mutations": [
+    {
+      "change": "Stale rows drop to the muted offline treatment (ground --panel-2, text --muted) with the age printed and a gold tick in --accent; conflict red becomes blocked-only, and a row both stale and blocked renders as blocked with its age still printed.",
+      "selector": ".board-row.is-stale"
+    },
+    {
+      "change": "Set the board cluster gap to 1rem (ladder step --space-4); touch targets do not shrink at any step.",
+      "selector": ".board"
+    }
+  ],
+  "package": "nougenai-brand",
+  "status": "candidate",
+  "summary": "Explored via tweaks manifest 'boards-exploration': stale-treatment = quiet; density = --space-4.",
+  "surface": "fleet-boards",
+  "variant": "boards-explored-quiet-compact"
+}
