@@ -54,6 +54,21 @@ Every plan below is a **candidate**: stored, comparable, and inert. Nothing here
 | `.board-row.is-blocked` | Conflict tokens stay exclusive to this state: --status-conflict-text for the blocker line, keyline if the keyline variant is also locked. |
 | `.board-row.is-stale.is-blocked` | Blocked wins: a row that is both stale and blocked renders as blocked, with the stale age still printed. |
 
+## boards-stitch-pass1-layout
+
+- Surface: `fleet-boards` · Package: `nougenai-brand` · Mutations: 6
+- What it does: Layout distilled by hand from the first live Google Stitch candidate (project 6226010854277612569, screen 'Fleet Boards - Operations', 2026-11-25): a left navigation rail, a top metrics strip, lane cards whose footers carry the purple shard chip plus heartbeat age, and a right column stacking the PR Board over the Relay Feed. The Stitch output is evidence (inferred), never canon; this plan stores only the layout deltas that survive the brand rules. Two defects in the generated screen are recorded, not copied: the generator drew its own N logo instead of the pinned asset, and its urgent counts disagree with each other (3 in the header badge, 2 in the metrics strip) because the data is invented.
+- **Locking it means:** Fleet Boards gains the rail, the metrics strip, the lane-card footers and the stacked right column as its permanent layout. Locking also binds the two corrections: the header mark is the package's sha256-pinned N pin asset (never a generated mark), and urgent counts come from one board data source (never per-region invented numbers). Until Dave locks it, nothing renders differently.
+
+| Selector | Change |
+|---|---|
+| `.board-shell` | Add a left navigation rail (.board-nav) listing the board family: Operations Board, Active Fleet, Incidents, Telemetry, System Settings. Rail sits on the flat ground token with a 1px border-subtle right edge; the active entry is marked with the brand green text token, never a filled green block. |
+| `.board-metrics` | Add a metrics strip above the lanes grid: Active Lanes (nominal count in green text), Avg Heartbeat, Allocated Memory with its shard count carried on a purple shard chip, Relay Queue rate, and the single gold URGENT badge at the strip's right end beside the Sync Board action. |
+| `.lane-card > footer` | Lane card footers carry exactly two facts: the lane's shard chip (purple chip tokens, e.g. 'shard-04 · 1.2GB') and the heartbeat age in muted mono. No other colour enters the footer; purple stays confined to the shard/memory chip here as everywhere. |
+| `.board-column--side` | The right column stacks PR Board over Relay Feed. PR rows carry state chips in the package status tokens (Approved = verified green text, In Review = pending muted, Needs Rebase = conflict red text). Relay entries are timestamped mono with the message in standard text and any shard reference as a purple chip. |
+| `.board-header .brand-mark` | The header mark is the package's pinned N pin asset bytes (assets/n-pin.webp, sha256-pinned; compiler check enforces parity). A generated or redrawn mark is a verify-gate failure, recorded as such in the Stitch pass-1 findings. |
+| `.board-metrics .urgent-count, .board-header .urgent-count` | One urgent count, one source: both placements render the same board-computed number. The Stitch candidate showed 3 and 2 in the two places because its data was invented; invented numbers never survive a morph. |
+
 ## boards-urgent-gold-rule
 
 - Surface: `fleet-boards` · Package: `nougenai-brand` · Mutations: 3
